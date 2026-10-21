@@ -1,0 +1,574 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>EnglishLab</title>
+<style>
+:root{--bg:#f6f7fb;--card:#fff;--tx:#1b1f2a;--mut:#6b7280;--ac:#4f46e5;--ok:#16a34a;--bad:#dc2626;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#12141a;--card:#1c1f28;--tx:#eef0f5;--mut:#9aa1b2;--ac:#8b85ff}}
+:root[data-theme="dark"]{--bg:#12141a;--card:#1c1f28;--tx:#eef0f5;--mut:#9aa1b2;--ac:#8b85ff}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--tx);font-family:system-ui,Arial,sans-serif}
+header{padding:28px 16px 18px;text-align:center;background:linear-gradient(135deg,#4f46e5,#7c3aed);color:#fff;border-radius:0 0 24px 24px}
+h1{margin:0;font-size:30px}
+h2{margin:0 0 8px;font-size:19px}
+header p{margin:4px 0 0;color:rgba(255,255,255,.85)}
+nav{display:flex;gap:6px;padding:12px 10px;justify-content:center;flex-wrap:wrap}
+nav button{border:0;background:var(--card);color:var(--tx);padding:9px 12px;border-radius:20px;font-size:14px}
+nav button.on{background:var(--ac);color:#fff}
+main{max-width:560px;margin:auto;padding:0 16px 32px}
+.card{background:var(--card);border-radius:18px;padding:18px;margin-bottom:14px;box-shadow:0 2px 12px rgba(0,0,0,.08)}
+.opt{display:block;width:100%;text-align:left;margin-top:8px;padding:12px;border-radius:12px;border:1px solid var(--mut);background:none;color:var(--tx);font-size:16px}
+.opt.sel{border-color:var(--ac);box-shadow:0 0 0 2px var(--ac)}
+table{border-collapse:collapse;width:100%}th,td{border:1px solid var(--mut);padding:6px 8px;text-align:left}
+textarea{width:100%;margin-top:10px;padding:12px;border-radius:12px;border:1px solid var(--mut);background:var(--bg);color:var(--tx);font-size:16px;font-family:inherit}
+.opt.ok{background:var(--ok);color:#fff;border-color:var(--ok)}
+.opt.bad{background:var(--bad);color:#fff;border-color:var(--bad)}
+.go{background:var(--ac);color:#fff;border:0;padding:12px 18px;border-radius:12px;font-size:16px;margin:12px 8px 0 0}
+.go.sec{background:none;color:var(--tx);border:1px solid var(--mut)}
+.mut{color:var(--mut)}
+.hide{display:none}
+.row{display:flex;gap:8px;flex-wrap:wrap}
+.bar{height:8px;border-radius:4px;background:var(--bg);overflow:hidden;margin:6px 0 10px}
+.bar i{display:block;height:100%;background:var(--ac)}
+.err{border-top:1px solid var(--mut);padding:10px 0}
+
+header{background-size:200% 200%;animation:grad 8s ease infinite}
+@keyframes grad{0%,100%{background-position:0 50%}50%{background-position:100% 50%}}
+@keyframes up{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:none}}
+@keyframes pop{50%{transform:scale(1.03)}}
+@keyframes shake{25%{transform:translateX(-5px)}75%{transform:translateX(5px)}}
+section>.card,#rbox>.card{animation:up .4s ease both}
+.opt,.go,.chip,nav button{transition:transform .15s,background .2s,box-shadow .2s}
+.opt:active,.go:active,.chip:active,nav button:active{transform:scale(.97)}
+.card:hover{box-shadow:0 6px 20px rgba(79,70,229,.18)}
+.opt.ok{animation:pop .35s}.opt.bad{animation:shake .35s}
+nav{position:sticky;top:0;z-index:5;background:var(--bg);flex-wrap:nowrap;overflow-x:auto;justify-content:flex-start}
+nav button{white-space:nowrap;flex:none}
+nav button.on{box-shadow:0 4px 12px rgba(79,70,229,.35)}
+.bar i{transition:width .4s}
+.chip{border:1px solid var(--mut);background:none;color:var(--tx);padding:8px 12px;border-radius:18px;font-size:14px}
+.chip.on{background:var(--ac);color:#fff;border-color:var(--ac)}
+.pbox{background:var(--bg);border-left:4px solid var(--ac);padding:12px;border-radius:10px;margin:12px 0;line-height:1.5}
+#lg{max-width:560px;margin:12px auto 0;padding:0 16px;display:flex;gap:8px;align-items:center;flex-wrap:wrap}
+#lg input{flex:1;min-width:150px;padding:11px;border-radius:12px;border:1px solid var(--mut);background:var(--card);color:var(--tx);font-size:16px}
+#lg .go{margin:0}
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+
+[hidden]{display:none!important}
+#auth-overlay{position:fixed;inset:0;z-index:50;background:rgba(10,12,20,.6);display:flex;align-items:center;justify-content:center;padding:16px;overflow:auto}
+.auth-card{width:100%;max-width:400px;position:relative;margin:auto}
+.auth-x{position:absolute;top:12px;right:12px}
+.eyebrow{margin:0 0 6px;color:var(--ac);font-size:11px;font-weight:700;letter-spacing:.12em;text-transform:uppercase}
+.subtitle{margin:6px 0 14px;color:var(--mut);font-size:14px}
+.tabs{display:grid;grid-template-columns:1fr 1fr;gap:4px;padding:4px;border-radius:12px;background:var(--bg);margin:12px 0}
+.tab{border:0;background:none;color:var(--mut);padding:10px;border-radius:9px;font-weight:700;font-size:14px}
+.tab.active{background:var(--card);color:var(--tx);box-shadow:0 2px 8px rgba(0,0,0,.15)}
+.field{display:grid;gap:6px;margin-bottom:12px}
+.field label{font-size:12px;font-weight:700}
+.field input{padding:12px;border-radius:10px;border:1px solid var(--mut);background:var(--bg);color:var(--tx);font-size:16px;width:100%}
+.tools{display:flex;justify-content:space-between;align-items:center;gap:8px;margin-bottom:10px}
+.security{color:var(--mut);font-size:11px}
+.text-button{border:0;background:none;color:var(--ac);font-size:13px;padding:0}
+.notice{margin:0 0 12px;padding:10px 12px;border-radius:10px;border:1px solid var(--ok);font-size:13px}
+.notice.error{border-color:var(--bad);color:var(--bad)}
+.submit{display:flex;justify-content:space-between;align-items:center;width:100%;margin:0}
+.account-avatar{display:grid;width:56px;height:56px;place-items:center;border-radius:16px;background:var(--ac);color:#fff;font-size:24px;font-weight:800;margin:8px 0 12px}
+</style>
+</head>
+<body>
+<header><h1>🎓 EnglishLab</h1><p>Английский: уровни, тесты и аудирование</p><p id="acc"></p></header>
+<div id="lg"></div>
+<nav>
+<button class="on" data-t="teacher">🧑‍🏫 Учитель</button>
+<button data-t="test">✅ Тесты</button>
+<button data-t="listen">🎧 Listening</button>
+<button data-t="read">📖 Reading</button>
+<button data-t="write">✍️ Writing</button>
+<button data-t="mist">❗ Ошибки</button>
+<button data-t="prog">📊 Прогресс</button>
+</nav>
+<main>
+
+<section id="teacher">
+<div class="card"><h2>Учитель</h2><p class="mut">Выберите уровень и прочитайте короткое объяснение перед тестом.</p>
+<div class="row" id="tl"></div></div>
+<div class="card hide" id="tipbox"></div>
+<div class="card"><p class="mut">Живой ИИ-чат подключим позже, когда будет сервер и ключ API.</p></div>
+</section>
+
+<section id="test" class="hide">
+<div class="card" id="pick"><h2>Выберите уровень</h2><div class="row" id="pl"></div></div>
+<div class="card hide" id="qbox"></div>
+</section>
+
+<section id="listen" class="hide">
+<div class="card"><h2>Listening</h2>
+<p class="mut">Нажмите, послушайте фразу и выберите, что услышали.</p>
+<button class="go" id="play">▶ Слушать</button>
+<div id="lo"></div><div id="lr" class="mut"></div>
+<button class="go hide" id="ln">Дальше</button></div>
+</section>
+
+<section id="read" class="hide"><div id="rbox"></div></section>
+<section id="write" class="hide"><div class="card" id="wbox"></div></section>
+<section id="mist" class="hide"><div class="card" id="mbox"></div></section>
+<section id="prog" class="hide"><div class="card" id="pbox"></div></section>
+</main>
+<div id="auth-overlay" hidden>
+ <div class="card auth-card">
+  <button class="chip auth-x" id="auth-close" type="button">✕</button>
+  <div id="auth-view">
+   <p class="eyebrow">Личный кабинет</p>
+   <h2 id="form-title">С возвращением</h2>
+   <p class="subtitle" id="form-subtitle">Войдите, чтобы сохранять прогресс.</p>
+   <div class="tabs" role="tablist">
+    <button class="tab active" id="login-mode" type="button" role="tab" aria-selected="true">Войти</button>
+    <button class="tab" id="register-mode" type="button" role="tab" aria-selected="false">Создать аккаунт</button>
+   </div>
+   <form id="auth-form" novalidate>
+    <div class="field" id="name-field" hidden><label for="display-name">Как вас зовут?</label><input id="display-name" type="text" autocomplete="name" maxlength="80" placeholder="Например, Алия"></div>
+    <div class="field"><label for="email">Электронная почта</label><input id="email" type="email" autocomplete="email" placeholder="you@example.com" required></div>
+    <div class="field"><label for="password">Пароль</label><input id="password" type="password" autocomplete="current-password" minlength="8" placeholder="Не менее 8 символов" required></div>
+    <div class="field" id="confirm-field" hidden><label for="confirm-password">Повторите пароль</label><input id="confirm-password" type="password" autocomplete="new-password" minlength="8" placeholder="Введите пароль ещё раз"></div>
+    <div class="tools" id="form-tools"><span class="security">🔒 Защищено Firebase Auth</span><button class="text-button" id="forgot-password" type="button">Забыли пароль?</button></div>
+    <p class="notice" id="auth-notice" role="status" aria-live="polite" hidden></p>
+    <button class="go submit" id="submit-button" type="submit"><span id="submit-label">Войти</span><span aria-hidden="true">→</span></button>
+   </form>
+  </div>
+  <div id="account-view" hidden>
+   <p class="eyebrow">Аккаунт готов</p>
+   <div class="account-avatar" id="account-avatar" aria-hidden="true">E</div>
+   <h2 id="account-heading">Добро пожаловать!</h2>
+   <p class="subtitle" id="account-email"></p>
+   <p class="mut">Ваш прогресс, ошибки и черновики Writing сохраняются в вашем профиле.</p>
+   <p class="notice" id="account-notice" role="status" aria-live="polite" hidden></p>
+   <button class="go sec submit" id="signout-button" type="button">Выйти из аккаунта<span aria-hidden="true">↗</span></button>
+  </div>
+ </div>
+</div>
+
+<script>
+var LV=["A1","A2","B1"];
+var TIPS={
+ A1:"A1. Глагол to be: I am, he/she/it is, we/you/they are. Мн. число: cat → cats.",
+ A2:"A2. Past Simple: went, saw, had. Present Continuous: is watching. any в отрицаниях и вопросах. Сравнение: more interesting.",
+ B1:"B1. Present Perfect: have lived since 2020. Первое условие: If it rains, we will stay. Пассив: was broken. Косвенная речь: сдвиг времени назад."
+};
+var Q={
+ A1:[{q:"I ___ a student.",o:["am","is","are"],a:0},{q:"This ___ my sister.",o:["is","am","are"],a:0},{q:"We ___ from Russia.",o:["are","is","am"],a:0},{q:"She has two ___.",o:["cat","cats","cates"],a:1}],
+ A2:[{q:"Yesterday I ___ to the cinema.",o:["go","went","goes"],a:1},{q:"He ___ TV at the moment.",o:["watches","is watching","watch"],a:1},{q:"There isn't ___ milk.",o:["some","any","many"],a:1},{q:"This book is ___ than that one.",o:["interesting","more interesting","most interesting"],a:1}],
+ B1:[{q:"I ___ here since 2020.",o:["live","lived","have lived"],a:2},{q:"If it rains, we ___ at home.",o:["stay","will stay","stayed"],a:1},{q:"She asked me where I ___.",o:["live","lived","living"],a:1},{q:"The window ___ by the boy.",o:["broke","was broken","breaks"],a:1}]
+};
+var L=[
+ {s:"I would like a cup of coffee",o:["I would like a cup of coffee","I would like a cup of tea","I will like a cup of coffee"]},
+ {s:"Where is the nearest station",o:["Where is the nearest station","Where is the next station","What is the nearest station"]},
+ {s:"We are going to the park tomorrow",o:["We are going to the park tomorrow","We were going to the park tomorrow","We are going to the party tomorrow"]}
+];
+
+var USER="";try{USER=localStorage.getItem("elab_user")||""}catch(e){}
+function KEY(){return window.AUTH_UID?"elab_fb_"+window.AUTH_UID:(USER?"elab_u_"+USER.toLowerCase():"elab")}
+var S={res:{},mist:[]};
+function loadS(){S={res:{},mist:[]};try{var raw=localStorage.getItem(KEY());if(raw)S=JSON.parse(raw)}catch(e){}}
+loadS();
+function drawLogin(){
+ var el=$("lg");el.innerHTML="";
+ if(window.AUTH_ON){
+  var fb=document.createElement("button");fb.style.margin="0";
+  if(window.AUTH_UID){fb.className="go sec";fb.textContent="👤 "+(window.AUTH_NAME||"Аккаунт")}
+  else{fb.className="go";fb.textContent="Войти / Регистрация"}
+  fb.onclick=function(){if(window.auth_openOverlay)window.auth_openOverlay()};
+  el.appendChild(fb);return;
+ }
+ if(USER){el.innerHTML="👤 <b></b>";el.querySelector("b").textContent=USER;var b=document.createElement("button");b.className="go sec";b.textContent="Сменить";b.onclick=function(){USER="";try{localStorage.removeItem("elab_user")}catch(e){}loadS();drawLogin()};el.appendChild(b)}
+ else{var i=document.createElement("input");i.placeholder="Ваше имя (профиль на этом устройстве)";i.maxLength=30;var b2=document.createElement("button");b2.className="go";b2.textContent="Войти";b2.onclick=function(){var v=i.value.trim();if(!v)return;USER=v;try{localStorage.setItem("elab_user",v)}catch(e){}loadS();drawLogin()};el.appendChild(i);el.appendChild(b2)}
+}
+drawLogin();
+var DB=null,UID=null,tm=null;
+function save(){try{localStorage.setItem(KEY(),JSON.stringify(S))}catch(e){}
+ if(DB&&UID){clearTimeout(tm);tm=setTimeout(function(){DB.doc("data/users/"+UID+"/progress").set({json:JSON.stringify(S)}).catch(function(){})},800)}}
+function $(i){return document.getElementById(i)}
+var TABS=["teacher","test","listen","read","write","mist","prog"];
+function show(t){
+  document.querySelectorAll("nav button").forEach(function(x){x.classList.toggle("on",x.dataset.t===t)});
+  TABS.forEach(function(x){$(x).classList.toggle("hide",x!==t)});
+  if(t==="mist")drawMist();
+  if(t==="prog")drawProg();
+  if(t==="read")drawRead();
+  if(t==="write")drawWrite();
+}
+document.querySelectorAll("nav button").forEach(function(b){b.onclick=function(){show(b.dataset.t)}});
+
+function levelBtns(id,fn){
+  LV.forEach(function(l){var b=document.createElement("button");b.className="go";b.textContent=l;b.onclick=function(){fn(l)};$(id).appendChild(b)});
+}
+levelBtns("tl",function(l){var t=$("tipbox");t.classList.remove("hide");t.innerHTML="<p>"+TIPS[l]+"</p>";var b=document.createElement("button");b.className="go";b.textContent="Пройти тест "+l;b.onclick=function(){show("test");runTest(l,Q[l])};t.appendChild(b)});
+levelBtns("pl",function(l){runTest(l,Q[l])});
+
+var cur=[],ci=0,sc=0,clevel="";
+function runTest(l,list){clevel=l;cur=list;ci=0;sc=0;$("pick").classList.add("hide");$("qbox").classList.remove("hide");nextQ()}
+function nextQ(){
+  var el=$("qbox");
+  if(ci>=cur.length){
+    if(clevel!=="Повтор"){var o=S.res[clevel]||{best:0,tries:0};o.tries++;o.best=Math.max(o.best,sc);o.total=cur.length;S.res[clevel]=o;save()}
+    el.innerHTML="<h2>Готово!</h2><p>Результат: "+sc+" из "+cur.length+"</p>";
+    var b=document.createElement("button");b.className="go";b.textContent="К выбору";b.onclick=function(){$("pick").classList.remove("hide");el.classList.add("hide")};el.appendChild(b);return;
+  }
+  var c=cur[ci];
+  el.innerHTML="<h2>"+clevel+": вопрос "+(ci+1)+" из "+cur.length+"</h2><p>"+c.q+"</p><div id='r' class='mut'></div>";
+  var nb=document.createElement("button");nb.className="go hide";nb.textContent="Дальше";nb.onclick=function(){ci++;nextQ()};
+  c.o.forEach(function(t,i){
+    var b=document.createElement("button");b.className="opt";b.textContent=t;
+    b.onclick=function(){
+      var all=el.querySelectorAll(".opt");all.forEach(function(x){x.onclick=null});
+      all[c.a].classList.add("ok");
+      if(i===c.a){sc++;$("r").textContent="Верно!"}
+      else{b.classList.add("bad");$("r").textContent="Неверно";
+        if(!S.mist.some(function(m){return m.q===c.q})){S.mist.push(c);save()}}
+      if(i===c.a&&clevel==="Повтор"){S.mist=S.mist.filter(function(m){return m.q!==c.q});save()}
+      nb.classList.remove("hide");
+    };
+    el.appendChild(b);
+  });
+  el.appendChild(nb);
+}
+
+function drawMist(){
+  var m=$("mbox");
+  if(!S.mist.length){m.innerHTML="<h2>Ошибки</h2><p class='mut'>Пока ошибок нет. Пройдите тест, и неверные ответы появятся здесь.</p>";return}
+  var h="<h2>Ошибки ("+S.mist.length+")</h2>";
+  S.mist.forEach(function(c){h+="<div class='err'>"+c.q+"<br><b>Правильно: "+c.o[c.a]+"</b></div>"});
+  m.innerHTML=h;
+  var b=document.createElement("button");b.className="go";b.textContent="Повторить";
+  b.onclick=function(){show("test");runTest("Повтор",S.mist.slice())};m.appendChild(b);
+}
+function drawProg(){
+  var h="<h2>Прогресс</h2>";
+  LV.forEach(function(l){
+    var o=S.res[l];
+    if(!o){h+="<p>"+l+": ещё не проходили</p>";return}
+    var p=Math.round(o.best/o.total*100);
+    h+="<p>"+l+": лучший результат "+o.best+" из "+o.total+", попыток "+o.tries+"</p><div class='bar'><i style='width:"+p+"%'></i></div>";
+  });
+  $("pbox").innerHTML=h;
+  var b=document.createElement("button");b.className="go sec";b.textContent="Сбросить всё";
+  b.onclick=function(){S={res:{},mist:[]};save();drawProg()};$("pbox").appendChild(b);
+}
+
+var READ=[{"title": "Urban Ecology (Academic)", "text": "The rapid expansion of urban areas around the globe has triggered a profound shift in ecological dynamics, forcing various animal and plant species to adapt, relocate, or face extinction. Urban ecology, a relatively recent scientific discipline, focuses on understanding how organisms manage to survive—and occasionally thrive—within concrete jungles. Unlike traditional natural habitats, cities present a unique combination of challenges, including elevated temperatures, artificial light at night, habitat fragmentation, and high levels of noise pollution. Despite these harsh conditions, certain species, often referred to as urban adapters, have demonstrated remarkable behavioral and physiological flexibility. For instance, avian species such as the European starling and the peregrine falcon have altered their vocalizations to cut through urban noise and utilized tall architectural structures as substitutes for natural cliffs. Furthermore, researchers have discovered that urban plants often flower earlier than their rural counterparts due to the urban heat island effect. However, while these resilient creatures manage to persist, the overall biodiversity in heavily urbanized zones tends to decline sharply. Conservationists argue that future urban planning must integrate green infrastructure, such as wildlife corridors, rooftop gardens, and protected parks, to bridge the gap between human development and environmental preservation. Without deliberate intervention, the urban landscape may eventually become a sterile environment dominated exclusively by a handful of ultra-hardy generalist species.", "qs": [{"q": "What is the primary focus of the discipline known as urban ecology?", "o": ["Designing energy-efficient buildings for expanding cities", "Understanding how organisms survive and thrive in urban environments", "Finding methods to relocate endangered wildlife to rural reserves", "Measuring the exact levels of noise and light pollution in modern metropolises"], "a": 1}, {"q": "Which of the following is NOT mentioned as a challenge presented by cities to wildlife?", "o": ["Elevated temperatures", "Toxic chemical waste in rivers", "Artificial light at night", "Habitat fragmentation"], "a": 1}, {"q": "How have peregrine falcons adapted to urban environments according to the text?", "o": ["By hunting exclusively at night", "By changing their migratory routes", "By utilizing tall buildings instead of natural cliffs", "By developing resistance to urban noise pollution"], "a": 2}, {"q": "Why do urban plants tend to flower earlier than rural plants?", "o": ["Because of artificial street lighting", "Due to higher levels of carbon dioxide", "Because of the urban heat island effect", "Due to frequent watering by city maintenance"], "a": 2}, {"q": "What effect does heavy urbanization typically have on overall biodiversity?", "o": ["It causes biodiversity to decline sharply", "It temporarily increases the number of rare species", "It has no noticeable impact on local flora and fauna", "It encourages the evolution of completely new mammal species"], "a": 0}, {"q": "What solution do conservationists propose for future urban planning?", "o": ["Restricting human population growth in metropolitan zones", "Integrating green infrastructure like wildlife corridors and rooftop gardens", "Relocating all major industrial zones outside city limits", "Banning artificial lighting in public parks after sunset"], "a": 1}, {"q": "According to the text, European starlings have adapted by...", "o": ["altering their vocalizations to cut through urban noise.", "changing their feather color to match concrete.", "nesting inside underground subway tunnels.", "forming symbiotic relationships with domestic pets."], "a": 0}, {"q": "What might happen to the urban landscape without deliberate intervention?", "o": ["It will naturally return to its original forest state", "It will become dominated exclusively by a handful of ultra-hardy generalist species", "It will experience a massive surge in rare plant varieties", "It will completely collapse due to structural failures"], "a": 1}]},
+{title:"Sample: Urban Gardens",text:"Urban gardens have become increasingly popular in large cities over the past two decades. Residents use rooftops, balconies and unused land to grow vegetables and herbs. Supporters say these gardens reduce food costs and bring neighbours together. Critics argue that the amount of food produced is too small to make a real difference to city food supplies. A recent survey found that most gardeners joined for social reasons rather than to save money.",qs:[
+{q:"Urban gardens have become less popular in recent years.",o:["True","False","Not Given"],a:1},
+{q:"Most gardeners joined mainly to save money.",o:["True","False","Not Given"],a:1},
+{q:"Urban gardens are legal in every large city.",o:["True","False","Not Given"],a:2},
+{q:"Some people believe urban gardens produce too little food to matter.",o:["True","False","Not Given"],a:0}]}];
+var WRITE=[{"t": "Task 1: Weekly library visits", "min": 150, "p": "The figures below show the number of visits to a university library on weekdays in two different years. Summarise the information by selecting and reporting the main features, and make comparisons where relevant.", "table": [["Day", "2020", "2025"], ["Monday", "120", "160"], ["Tuesday", "150", "190"], ["Wednesday", "180", "240"], ["Thursday", "160", "220"], ["Friday", "110", "170"]], "sample": "The line graph compares the number of visits to a university library from Monday to Friday in 2020 and 2025.\n\nOverall, the library attracted more visitors on every weekday in 2025 than in 2020. In both years, Wednesday was the busiest day, while Friday had the lowest number of visits in 2020.\n\nIn 2020, library visits increased from 120 on Monday to 180 on Wednesday. The figure then declined to 160 on Thursday before falling further to 110 on Friday. This indicates that attendance generally rose during the first half of the week and decreased afterwards.\n\nA similar pattern can be seen in 2025, although the numbers were considerably higher. Visits began at 160 on Monday and reached 190 on Tuesday, before peaking at 240 on Wednesday. The figure then dropped slightly to 220 on Thursday and fell to 170 on Friday. The largest difference between the two years occurred on Wednesday and Thursday, when the library recorded 60 more visits in 2025. Overall, the data suggest that weekday library use increased over the five-year period.", "crit": ["Include a clear overview, accurate key figures and relevant comparisons.", "Organise the answer into logical paragraphs and use linking words naturally.", "Use varied, accurate vocabulary for trends and comparisons.", "Use a mixture of simple and complex sentences with good grammatical control."]}, {"t": "Task 1: Household recycling rates", "min": 150, "p": "The table shows the percentage of household waste recycled in three towns in 2015 and 2025. Summarise the information by selecting and reporting the main features, and make comparisons where relevant.", "table": [["Town", "2015 (%)", "2025 (%)"], ["Oakville", "35", "54"], ["Riverton", "28", "46"], ["Hillford", "42", "48"]], "sample": "The table compares household recycling rates in three towns in 2015 and 2025.\n\nOverall, recycling rates increased in all three locations. Oakville experienced the largest improvement and had the highest rate by 2025, whereas Hillford recorded the smallest rise.\n\nIn 2015, Hillford had the highest recycling rate, at 42%, followed by Oakville at 35%. Riverton had the lowest figure, with just 28% of household waste being recycled. The difference between the highest and lowest rates was therefore 14 percentage points.\n\nBy 2025, Oakville’s rate had risen substantially to 54%, an increase of 19 percentage points. Riverton also made considerable progress, climbing from 28% to 46%, a rise of 18 percentage points. In comparison, Hillford’s figure increased by only six percentage points, reaching 48%. As a result, Oakville moved from second place to first, while Hillford’s position changed from first to second. The figures indicate that recycling became more common in every town during the period.", "crit": ["Summarise the main patterns and compare the figures without adding unsupported explanations.", "Group related information and present it in a clear sequence.", "Use precise terms such as ‘rose’, ‘climbed’ and ‘percentage points’.", "Demonstrate accurate tense use and a range of sentence structures."]}, {"t": "Task 2: Technology and education", "min": 250, "p": "Some people believe that online learning will eventually replace most classroom teaching. Others think that traditional classrooms will always be necessary. Discuss both views and give your own opinion.", "sample": "Online education has become increasingly common, leading some people to predict that it will replace traditional classroom teaching. While digital learning offers considerable advantages, I believe that physical classrooms will remain important because of the interaction and support they provide.\n\nOn the one hand, online learning gives students greater flexibility. They can study from home, access recorded lessons and often learn at a time that suits their schedule. This can be especially useful for people who live far from educational institutions or need to combine study with work. In addition, digital platforms can provide a wide range of resources, allowing learners to review difficult topics at their own pace.\n\nOn the other hand, classroom education offers benefits that are difficult to reproduce online. Students can ask questions immediately, participate in group discussions and receive direct feedback from teachers. Being physically present with classmates may also help learners develop communication and teamwork skills. Furthermore, some students find it easier to concentrate in a structured classroom than when studying alone at home.\n\nIn my view, neither method should completely replace the other. A combination of online resources and face-to-face lessons is likely to provide the most effective approach. For example, students could watch explanatory videos before class and then use classroom time to solve problems and discuss ideas with their teachers.\n\nIn conclusion, online learning is flexible and convenient, but traditional classrooms continue to offer valuable social and educational benefits. A blended approach can make the best use of both methods.", "crit": ["Discuss both views, state a clear position and support ideas with explanations or examples.", "Use clear paragraphing and logical progression.", "Use topic-specific vocabulary accurately and avoid unnecessary repetition.", "Use varied sentence structures with generally accurate grammar."]}, {"t": "Task 2: Public transport and the environment", "min": 250, "p": "In many cities, traffic congestion and air pollution are increasing. Some people think governments should invest more in public transport, while others believe improving roads is a better solution. Discuss both views and give your own opinion.", "sample": "Traffic congestion and air pollution are serious challenges in many urban areas. Some people argue that governments should prioritise public transport, whereas others support spending more money on roads. Although road improvements can be useful, I believe investment in reliable public transport is a more sustainable long-term solution.\n\nThose who support road development argue that better roads can reduce delays and improve access to different parts of a city. New junctions and well-maintained roads may help vehicles move more efficiently, particularly in areas where infrastructure is inadequate. Road improvements can also benefit buses, delivery services and emergency vehicles. However, expanding road capacity may encourage more people to drive, which can eventually recreate congestion.\n\nIn contrast, effective public transport can carry large numbers of passengers using less road space per person. If buses and trains are frequent, affordable and reliable, commuters may choose them instead of private cars. This could reduce the number of vehicles on the road and help lower pollution. Public transport can also improve mobility for people who cannot drive or afford a car. Nevertheless, these benefits depend on good planning, sufficient capacity and convenient routes.\n\nIn my opinion, governments should place greater emphasis on public transport while continuing to maintain essential roads. For instance, introducing dedicated bus lanes and improving connections between residential areas and workplaces could make public transport more attractive. Road repairs would still be necessary, but building more roads should not be the main strategy.\n\nIn conclusion, road improvements can address certain transport problems, but investment in accessible public transport is more likely to reduce congestion and environmental damage over time.", "crit": ["Address both positions, give a clear opinion and develop relevant supporting points.", "Structure the argument into a clear introduction, body paragraphs and conclusion.", "Use accurate vocabulary related to transport, congestion and pollution.", "Use complex sentences and accurate grammatical forms."]}];
+function drawRead(){
+ var el=$("rbox");el.innerHTML="";
+ READ.forEach(function(p){
+  var d=document.createElement("div");d.className="card";
+  d.innerHTML="<h2>"+p.title+"</h2><p>"+p.text+"</p>";
+  var picks=[];
+  p.qs.forEach(function(c,qi){
+   var w=document.createElement("div");w.innerHTML="<p><b>"+(qi+1)+".</b> "+c.q+"</p>";
+   c.o.forEach(function(t,i){var b=document.createElement("button");b.className="opt";b.textContent=t;
+    b.onclick=function(){picks[qi]=i;w.querySelectorAll(".opt").forEach(function(x){x.classList.remove("sel")});b.classList.add("sel")};w.appendChild(b)});
+   d.appendChild(w)});
+  var r=document.createElement("div");r.className="mut";
+  var ck=document.createElement("button");ck.className="go";ck.textContent="Проверить";
+  ck.onclick=function(){var n=0;p.qs.forEach(function(c,qi){if(picks[qi]===c.a)n++;else if(!S.mist.some(function(m){return m.q===c.q}))S.mist.push(c)});save();r.textContent="Результат: "+n+" из "+p.qs.length};
+  d.appendChild(ck);d.appendChild(r);el.appendChild(d)});
+}
+var wi=0,TI=null;
+var SN=["Task 1 · Library","Task 1 · Recycling","Task 2 · Education","Task 2 · Transport"];
+var CL=["Task Achievement / Response","Coherence and Cohesion","Lexical Resource","Grammar"];
+function drawWrite(){
+ clearInterval(TI);
+ var el=$("wbox");el.innerHTML="<h2>✍️ Writing</h2>";
+ var row=document.createElement("div");row.className="row";
+ WRITE.forEach(function(w,i){var b=document.createElement("button");b.className="chip"+(i===wi?" on":"");b.textContent=SN[i]||("Task "+(i+1));b.onclick=function(){wi=i;drawWrite()};row.appendChild(b)});
+ el.appendChild(row);
+ var w=WRITE[wi];
+ var p=document.createElement("div");p.className="pbox";p.textContent=w.p;el.appendChild(p);
+ if(w.table){var tb="<div style='overflow-x:auto'><table><tr>"+w.table[0].map(function(x){return "<th>"+x+"</th>"}).join("")+"</tr>";w.table.slice(1).forEach(function(r){tb+="<tr>"+r.map(function(x){return "<td>"+x+"</td>"}).join("")+"</tr>"});tb+="</table></div>";var d=document.createElement("div");d.innerHTML=tb;el.appendChild(d)}
+ var ta=document.createElement("textarea");ta.rows=14;ta.placeholder="Пишите ответ здесь...";ta.value=(S.draft&&S.draft[wi])||"";
+ var bar=document.createElement("div");bar.className="bar";var bi=document.createElement("i");bar.appendChild(bi);
+ var c=document.createElement("div");c.className="mut";
+ function upd(){var n=ta.value.trim()?ta.value.trim().split(/\s+/).length:0;c.textContent="Слов: "+n+" из "+w.min+". Черновик сохраняется сам.";bi.style.width=Math.min(100,Math.round(n/w.min*100))+"%"}
+ ta.oninput=function(){upd();S.draft=S.draft||{};S.draft[wi]=ta.value;save()};
+ upd();el.appendChild(ta);el.appendChild(bar);el.appendChild(c);
+ var mins=w.min>=250?40:20;
+ var tmr=document.createElement("button");tmr.className="go sec";tmr.textContent="⏱ Таймер "+mins+" мин";
+ var tv=document.createElement("span");tv.className="mut";
+ tmr.onclick=function(){clearInterval(TI);var left=mins*60;function tick(){var m=Math.floor(left/60),sc=left%60;tv.textContent=(m<10?"0":"")+m+":"+(sc<10?"0":"")+sc;if(left<=0){clearInterval(TI);tv.textContent="Время вышло"}left--}tick();TI=setInterval(tick,1000)};
+ el.appendChild(tmr);el.appendChild(tv);
+ var sb=document.createElement("button");sb.className="go sec";sb.textContent="Образец (band 7) и критерии";
+ var sv=document.createElement("div");sv.className="hide";
+ var sp=document.createElement("p");sp.style.whiteSpace="pre-wrap";sp.textContent=w.sample;sv.appendChild(sp);
+ var cr=document.createElement("div");cr.innerHTML="<h3>Критерии</h3>"+w.crit.map(function(x,k){return "<p><b>"+CL[k]+":</b> "+x+"</p>"}).join("");sv.appendChild(cr);
+ sb.onclick=function(){sv.classList.toggle("hide")};
+ el.appendChild(sb);el.appendChild(sv);
+}
+var li=0,lc=null;
+function shuffle(a){return a.slice().sort(function(){return Math.random()-0.5})}
+function showL(){
+  lc=L[li%L.length];$("lo").innerHTML="";$("lr").textContent="";$("ln").classList.add("hide");
+  shuffle(lc.o).forEach(function(t){
+    var b=document.createElement("button");b.className="opt";b.textContent=t;
+    b.onclick=function(){var ok=t===lc.s;b.classList.add(ok?"ok":"bad");$("lr").textContent=ok?"Верно!":"Правильный ответ: "+lc.s;$("ln").classList.remove("hide")};
+    $("lo").appendChild(b);
+  });
+}
+$("play").onclick=function(){
+  try{speechSynthesis.cancel();var u=new SpeechSynthesisUtterance(lc.s);u.lang="en-US";u.rate=0.9;speechSynthesis.speak(u)}
+  catch(e){$("lr").textContent="Озвучка не поддерживается"}
+};
+$("ln").onclick=function(){li++;showL()};
+showL();
+(async function(){try{
+ var u=await claude.use("user"),d=await claude.use("db");
+ if(!u||!d){$("acc").textContent="";return}
+ var id=await u.id();if(!id)return;
+ var snap=await d.doc("data/users/"+id+"/progress").get();
+ DB=d;UID=id;
+ if(snap.exists){var j=snap.data().json;if(j){S=JSON.parse(j);try{localStorage.setItem(KEY(),j)}catch(e){}}}
+ else save();
+ $("acc").textContent="Прогресс сохраняется в вашем аккаунте";
+}catch(e){$("acc").textContent=""}})();
+</script>
+<script type="module">
+import { initializeApp } from "https://www.gstatic.com/firebasejs/12.18.0/firebase-app.js";
+import { browserLocalPersistence, createUserWithEmailAndPassword, getAuth, onAuthStateChanged, sendPasswordResetEmail, setPersistence, signInWithEmailAndPassword, signOut, updateProfile } from "https://www.gstatic.com/firebasejs/12.18.0/firebase-auth.js";
+import { doc, getDoc, getFirestore, serverTimestamp, setDoc } from "https://www.gstatic.com/firebasejs/12.18.0/firebase-firestore.js";
+
+// ВСТАВЬТЕ СЮДА конфигурацию Web app из Firebase Console (Project settings → Your apps).
+// Это клиентская конфигурация, не пароль. Не вставляйте сюда ключ сервисного аккаунта.
+const auth_firebaseConfig = {
+  apiKey: "YOUR_FIREBASE_WEB_API_KEY",
+  authDomain: "YOUR_PROJECT_ID.firebaseapp.com",
+  projectId: "YOUR_PROJECT_ID",
+  appId: "YOUR_FIREBASE_APP_ID",
+};
+const auth_missingKeys = Object.keys(auth_firebaseConfig).filter((k) => !auth_firebaseConfig[k] || auth_firebaseConfig[k].startsWith("YOUR_"));
+const auth_ids = ["auth-overlay","auth-close","account-email","account-heading","account-notice","account-view","account-avatar","auth-form","auth-notice","auth-view","confirm-field","confirm-password","display-name","email","forgot-password","form-subtitle","form-title","form-tools","login-mode","name-field","password","register-mode","signout-button","submit-button","submit-label"];
+const auth_el = {};
+auth_ids.forEach((id) => { auth_el[id] = document.getElementById(id); });
+let auth_mode = "login", auth_client, auth_database, auth_pendingProfileNotice = "", auth_timer = null;
+
+function auth_setNotice(element, message, isError = false) {
+  element.textContent = message;
+  element.hidden = !message;
+  element.classList.toggle("error", isError);
+}
+function auth_errorMessage(error) {
+  const m = {
+    "auth/email-already-in-use": "Этот адрес уже зарегистрирован. Попробуйте войти.",
+    "auth/invalid-credential": "Не удалось войти. Проверьте почту и пароль.",
+    "auth/invalid-email": "Проверьте формат электронной почты.",
+    "auth/network-request-failed": "Нет соединения. Проверьте интернет и попробуйте снова.",
+    "auth/operation-not-allowed": "Включите Email/Password в Firebase Console → Authentication.",
+    "auth/too-many-requests": "Слишком много попыток. Подождите немного.",
+    "auth/user-not-found": "Не удалось войти. Проверьте почту и пароль.",
+    "auth/weak-password": "Firebase требует пароль не короче 6 символов.",
+    "auth/unauthorized-domain": "Добавьте домен сайта в Authentication → Settings → Authorized domains.",
+    "permission-denied": "Вход прошёл, но Firestore отклонил операцию. Проверьте правила Firestore.",
+  };
+  return m[error?.code] ?? error?.message ?? "Что-то пошло не так.";
+}
+function auth_setBusy(isBusy) {
+  auth_el["submit-button"].disabled = isBusy;
+  auth_el["login-mode"].disabled = isBusy;
+  auth_el["register-mode"].disabled = isBusy;
+  auth_el["submit-label"].textContent = isBusy ? "Подождите…" : auth_mode === "register" ? "Создать аккаунт" : "Войти";
+}
+function auth_setMode(mode) {
+  auth_mode = mode;
+  const r = mode === "register";
+  auth_el["login-mode"].classList.toggle("active", !r);
+  auth_el["register-mode"].classList.toggle("active", r);
+  auth_el["login-mode"].setAttribute("aria-selected", String(!r));
+  auth_el["register-mode"].setAttribute("aria-selected", String(r));
+  auth_el["name-field"].hidden = !r;
+  auth_el["confirm-field"].hidden = !r;
+  auth_el["form-tools"].hidden = r;
+  auth_el["display-name"].required = r;
+  auth_el["confirm-password"].required = r;
+  auth_el["password"].autocomplete = r ? "new-password" : "current-password";
+  auth_el["form-title"].textContent = r ? "Создайте аккаунт" : "С возвращением";
+  auth_el["form-subtitle"].textContent = r ? "Аккаунт нужен, чтобы прогресс сохранялся на всех устройствах." : "Войдите, чтобы сохранять прогресс.";
+  auth_el["submit-label"].textContent = r ? "Создать аккаунт" : "Войти";
+  auth_setNotice(auth_el["auth-notice"], "");
+}
+function auth_saveProfile(user, displayName) {
+  return setDoc(doc(auth_database, "users", user.uid), {
+    displayName, email: user.email, createdAt: serverTimestamp(), updatedAt: serverTimestamp(),
+  });
+}
+async function auth_register({ displayName, email, password }) {
+  const name = String(displayName ?? "").trim();
+  const mail = String(email ?? "").trim();
+  if (!name) throw new Error("Укажите имя.");
+  if (name.length > 80) throw new Error("Имя должно быть короче 80 символов.");
+  if (!mail) throw new Error("Укажите электронную почту.");
+  if (String(password ?? "").length < 8) throw new Error("Пароль должен содержать не менее 8 символов.");
+  const result = await createUserWithEmailAndPassword(auth_client, mail, password);
+  try { await updateProfile(result.user, { displayName: name }); } catch { /* имя возьмётся из Firestore */ }
+  try { await auth_saveProfile(result.user, name); return { user: result.user, profileSaved: true }; }
+  catch (profileError) { return { user: result.user, profileSaved: false, profileError }; }
+}
+async function auth_login({ email, password }) {
+  const mail = String(email ?? "").trim();
+  if (!mail || !password) throw new Error("Введите электронную почту и пароль.");
+  return (await signInWithEmailAndPassword(auth_client, mail, password)).user;
+}
+async function auth_logout() { await signOut(auth_client); }
+async function auth_sendPasswordReset(email) {
+  const mail = String(email ?? "").trim();
+  if (!mail) throw new Error("Сначала введите электронную почту.");
+  await sendPasswordResetEmail(auth_client, mail);
+}
+async function auth_getProfile(user) {
+  if (!user?.uid) return null;
+  const snap = await getDoc(doc(auth_database, "users", user.uid));
+  return snap.exists() ? snap.data() : null;
+}
+
+// Прогресс (результаты тестов, ошибки, черновики Writing): users/{uid}/progress/main
+async function auth_pullProgress(user) {
+  window.AUTH_UID = user.uid;
+  try {
+    const snap = await getDoc(doc(auth_database, "users", user.uid, "progress", "main"));
+    if (snap.exists() && snap.data().json) {
+      window.S = JSON.parse(snap.data().json);
+      try { localStorage.setItem(window.KEY(), snap.data().json); } catch { /* ignore */ }
+    } else if (window.save) {
+      window.save();
+    }
+  } catch (error) {
+    console.error("Progress load failed:", error);
+  }
+}
+function auth_installSaveHook() {
+  const oldSave = window.save;
+  window.save = function () {
+    oldSave();
+    if (!window.AUTH_UID || !auth_database) return;
+    clearTimeout(auth_timer);
+    auth_timer = setTimeout(() => {
+      setDoc(doc(auth_database, "users", window.AUTH_UID, "progress", "main"), {
+        json: JSON.stringify(window.S), updatedAt: serverTimestamp(),
+      }).catch((e) => console.error("Progress save failed:", e));
+    }, 1000);
+  };
+}
+function auth_refreshSite() {
+  if (window.drawLogin) window.drawLogin();
+  const on = document.querySelector("nav button.on");
+  if (on && window.show) window.show(on.dataset.t);
+}
+
+async function auth_handleSubmit(event) {
+  event.preventDefault();
+  auth_setNotice(auth_el["auth-notice"], "");
+  try {
+    auth_setBusy(true);
+    const credentials = { email: auth_el["email"].value.trim(), password: auth_el["password"].value };
+    if (auth_mode === "register") {
+      if (auth_el["confirm-password"].value !== credentials.password) throw new Error("Пароли не совпадают.");
+      const reg = await auth_register({ ...credentials, displayName: auth_el["display-name"].value });
+      if (!reg.profileSaved) {
+        auth_pendingProfileNotice = "Аккаунт создан, но профиль не удалось сохранить: " + auth_errorMessage(reg.profileError);
+      }
+    } else {
+      await auth_login(credentials);
+    }
+  } catch (error) {
+    auth_setNotice(auth_el["auth-notice"], auth_errorMessage(error), true);
+  } finally {
+    auth_setBusy(false);
+  }
+}
+async function auth_handlePasswordReset() {
+  auth_setNotice(auth_el["auth-notice"], "");
+  const okText = "Если для этого адреса есть аккаунт, Firebase отправит письмо со ссылкой для сброса пароля.";
+  try {
+    await auth_sendPasswordReset(auth_el["email"].value);
+    auth_setNotice(auth_el["auth-notice"], okText);
+  } catch (error) {
+    if (error?.code === "auth/user-not-found") { auth_setNotice(auth_el["auth-notice"], okText); return; }
+    auth_setNotice(auth_el["auth-notice"], auth_errorMessage(error), true);
+  }
+}
+async function auth_handleAuthChange(user) {
+  if (!user) {
+    window.AUTH_UID = null;
+    window.AUTH_NAME = "";
+    auth_el["account-view"].hidden = true;
+    auth_el["auth-view"].hidden = false;
+    auth_el["auth-form"].reset();
+    auth_pendingProfileNotice = "";
+    if (window.loadS) window.loadS();
+    auth_refreshSite();
+    return;
+  }
+  auth_el["auth-view"].hidden = true;
+  auth_el["account-view"].hidden = false;
+  auth_el["account-email"].textContent = user.email ?? "";
+  window.AUTH_NAME = user.displayName || user.email || "Аккаунт";
+  auth_el["account-heading"].textContent = user.displayName ? "Привет, " + user.displayName + "!" : "Добро пожаловать!";
+  auth_el["avatar"] = auth_el["account-avatar"];
+  auth_el["account-avatar"].textContent = (user.displayName?.trim().charAt(0) || user.email?.charAt(0) || "E").toUpperCase();
+  const notice = auth_pendingProfileNotice;
+  auth_pendingProfileNotice = "";
+  auth_setNotice(auth_el["account-notice"], notice, Boolean(notice));
+  if (!notice) auth_el["auth-overlay"].hidden = true;
+  try {
+    const profile = await auth_getProfile(user);
+    if (profile?.displayName) {
+      window.AUTH_NAME = profile.displayName;
+      auth_el["account-heading"].textContent = "Привет, " + profile.displayName + "!";
+    }
+  } catch (error) {
+    auth_setNotice(auth_el["account-notice"], auth_errorMessage(error), true);
+  }
+  await auth_pullProgress(user);
+  auth_refreshSite();
+}
+async function auth_handleLogout() {
+  auth_el["signout-button"].disabled = true;
+  try { await auth_logout(); auth_el["auth-overlay"].hidden = true; }
+  catch (error) { auth_setNotice(auth_el["account-notice"], auth_errorMessage(error), true); }
+  finally { auth_el["signout-button"].disabled = false; }
+}
+
+async function auth_start() {
+  if (auth_missingKeys.length) {
+    console.info("Firebase не настроен, вставьте конфигурацию в auth_firebaseConfig. Не хватает: " + auth_missingKeys.join(", "));
+    return; // сайт работает без регистрации (вход по имени на этом устройстве)
+  }
+  auth_el["login-mode"].addEventListener("click", () => auth_setMode("login"));
+  auth_el["register-mode"].addEventListener("click", () => auth_setMode("register"));
+  auth_el["auth-form"].addEventListener("submit", auth_handleSubmit);
+  auth_el["forgot-password"].addEventListener("click", auth_handlePasswordReset);
+  auth_el["signout-button"].addEventListener("click", auth_handleLogout);
+  auth_el["auth-close"].addEventListener("click", () => { auth_el["auth-overlay"].hidden = true; });
+  auth_el["auth-overlay"].addEventListener("click", (e) => { if (e.target === auth_el["auth-overlay"]) auth_el["auth-overlay"].hidden = true; });
+  window.auth_openOverlay = () => { auth_el["auth-overlay"].hidden = false; };
+  try {
+    const app = initializeApp(auth_firebaseConfig);
+    auth_client = getAuth(app);
+    auth_database = getFirestore(app);
+    await setPersistence(auth_client, browserLocalPersistence);
+    auth_installSaveHook();
+    window.AUTH_ON = true;
+    if (window.drawLogin) window.drawLogin();
+    onAuthStateChanged(auth_client, (user) => void auth_handleAuthChange(user),
+      (error) => auth_setNotice(auth_el["auth-notice"], auth_errorMessage(error), true));
+  } catch (error) {
+    console.error(error);
+  }
+}
+void auth_start();
+</script>
+</body>
+</html>
