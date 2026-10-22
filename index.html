@@ -75,26 +75,174 @@ nav button.on{box-shadow:0 4px 12px rgba(79,70,229,.35)}
 .notice.error{border-color:var(--bad);color:var(--bad)}
 .submit{display:flex;justify-content:space-between;align-items:center;width:100%;margin:0}
 .account-avatar{display:grid;width:56px;height:56px;place-items:center;border-radius:16px;background:var(--ac);color:#fff;font-size:24px;font-weight:800;margin:8px 0 12px}
+
+:root{--ac:#2563eb;--ac2:#10b981}
+body{font-family:"Nunito",system-ui,Arial,sans-serif}
+header{position:relative;overflow:hidden;padding:26px 16px 26px;border-radius:0 0 34px 34px;background:linear-gradient(135deg,#1d4ed8 0%,#0891b2 55%,#10b981 100%);background-size:200% 200%;animation:grad 9s ease infinite;box-shadow:0 12px 30px rgba(37,99,235,.35)}
+.brand{display:flex;align-items:center;justify-content:center;gap:12px;position:relative;z-index:2}
+.brand h1{font-size:32px;letter-spacing:.5px}
+.brand h1 span{color:#ffe08a}
+.logo{filter:drop-shadow(0 4px 8px rgba(0,0,0,.25));animation:pop2 3s ease-in-out infinite}
+.fl{position:absolute;font-size:28px;pointer-events:none;animation:sway 6s ease-in-out infinite}
+@keyframes sway{0%,100%{transform:translateY(0) rotate(-8deg)}50%{transform:translateY(-9px) rotate(8deg)}}
+@keyframes pop2{0%,100%{transform:scale(1)}50%{transform:scale(1.06)}}
+.card{border-radius:22px}
+nav button.on{background:linear-gradient(135deg,var(--ac),var(--ac2))}
+.go{background:linear-gradient(135deg,var(--ac),var(--ac2));box-shadow:0 4px 12px rgba(37,99,235,.3)}
+.go.sec{background:none;box-shadow:none}
+.chip.on{background:linear-gradient(135deg,var(--ac),var(--ac2));border-color:transparent}
+.bar i{background:linear-gradient(90deg,var(--ac),var(--ac2))}
+.fcard{min-height:180px;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;border-radius:22px;padding:20px;margin:10px 0;background:linear-gradient(135deg,rgba(37,99,235,.14),rgba(16,185,129,.18));cursor:pointer;font-size:30px;font-weight:800;transition:transform .2s}
+.fcard:active{transform:scale(.98)}
+.fcard small{font-size:15px;font-weight:400;color:var(--mut);margin-top:12px}
+.foot{text-align:center;color:var(--mut);padding:8px 16px 28px;font-size:14px}
+
+body{background-image:url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' width='140' height='140'><g fill='%23fbbf24'><circle cx='20' cy='20' r='3'/><circle cx='20' cy='13' r='3'/><circle cx='20' cy='27' r='3'/><circle cx='13' cy='20' r='3'/><circle cx='27' cy='20' r='3'/></g><circle cx='20' cy='20' r='2' fill='%23fff'/><g fill='%2360a5fa'><circle cx='95' cy='55' r='3'/><circle cx='95' cy='48' r='3'/><circle cx='95' cy='62' r='3'/><circle cx='88' cy='55' r='3'/><circle cx='102' cy='55' r='3'/></g><circle cx='95' cy='55' r='2' fill='%23fff'/><g fill='%2334d399'><circle cx='50' cy='110' r='3'/><circle cx='50' cy='103' r='3'/><circle cx='50' cy='117' r='3'/><circle cx='43' cy='110' r='3'/><circle cx='57' cy='110' r='3'/></g><circle cx='50' cy='110' r='2' fill='%23fff'/><g fill='%23fb923c'><circle cx='120' cy='115' r='3'/><circle cx='120' cy='108' r='3'/><circle cx='120' cy='122' r='3'/><circle cx='113' cy='115' r='3'/><circle cx='127' cy='115' r='3'/></g><circle cx='120' cy='115' r='2' fill='%23fff'/></svg>");background-attachment:fixed}
+.card,nav{background-clip:padding-box}
+.fl{opacity:.95;filter:drop-shadow(0 2px 3px rgba(0,0,0,.25))}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--ac:#60a5fa;--ac2:#34d399}}
+:root[data-theme="dark"]{--ac:#60a5fa;--ac2:#34d399}
+header{padding:30px 16px 30px;min-height:130px}
+.brand h1{text-shadow:0 2px 8px rgba(0,0,0,.25)}
+
+:root:root{--bg:#0b1020;--card:#141b30;--tx:#e8ecf6;--mut:#8b95ad;--ac:#3b82f6;--ac2:#06b6d4;--ok:#22c55e;--bad:#ef4444}
+body{background-image:none;background:var(--bg)}
+header{background:linear-gradient(135deg,#0f172a 0%,#1e3a8a 60%,#0e7490 100%);background-size:100% 100%;animation:none;border-radius:0 0 22px 22px;min-height:0;padding:22px 16px;box-shadow:0 8px 24px rgba(0,0,0,.45)}
+.brand h1{font-size:30px;letter-spacing:.3px;text-shadow:none}
+.brand h1 span{color:#67e8f9}
+.logo{animation:none;filter:none}
+header p{color:#b6c2dc}
+.card{border-radius:14px;box-shadow:none;border:1px solid #222c47}
+.card:hover{box-shadow:none}
+nav button{background:#141b30;border:1px solid #222c47;color:var(--tx);border-radius:10px}
+nav button.on{background:linear-gradient(135deg,var(--ac),var(--ac2));border-color:transparent;box-shadow:none}
+.go{border-radius:10px;box-shadow:none}
+.go.sec{border:1px solid #2e3a5c;color:var(--tx)}
+.opt{border-radius:10px;border-color:#2e3a5c}
+.field input,#lg input,textarea{background:#0f1528;border-color:#2e3a5c}
+.fcard{border-radius:14px;border:1px solid #222c47;background:linear-gradient(135deg,rgba(59,130,246,.16),rgba(6,182,212,.12))}
+.foot{padding:8px 16px 28px;font-size:13px}
+
+.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin:12px 0}
+.stats div{background:var(--bg);border:1px solid #222c47;border-radius:10px;padding:10px 4px;text-align:center}
+.stats b{display:block;font-size:20px}
+.stats span{font-size:11px;color:var(--mut)}
+.dots{display:flex;gap:5px;flex-wrap:wrap}
+.dot{width:16px;height:16px;border-radius:4px;background:#222c47}
+.dot.on{background:linear-gradient(135deg,var(--ac),var(--ac2))}
+#sbox ul{margin:6px 0 0;padding-left:20px}
+
+:root:root{--bg:#f6f4fb;--card:#ffffff;--tx:#1e2142;--mut:#6a7088;--ac:#5b4fe0;--ac2:#7b6cf6;--ok:#16a34a;--bad:#dc2626;--bd:#e9e5f4;--soft:#eeeafc}
+@media (prefers-color-scheme:dark){:root:root{--bg:#0e1020;--card:#171a2e;--tx:#eceefb;--mut:#9aa0bd;--ac:#8b82ff;--ac2:#a99bff;--bd:#272b47;--soft:#222650}}
+body{background:var(--bg);background-image:none;color:var(--tx)}
+header.top{position:sticky;top:0;z-index:40;display:flex;align-items:center;gap:12px;height:58px;min-height:0;padding:0 14px;background:var(--card);border-bottom:1px solid var(--bd);border-radius:0;box-shadow:none;animation:none;color:var(--tx);overflow:visible}
+.brand{display:flex;align-items:center;gap:10px}
+.brand h1{font-size:20px;margin:0;color:var(--tx);text-shadow:none}
+.brand h1 span{color:var(--ac)}
+.logo{animation:none;filter:none}
+.burger{border:1px solid var(--bd);background:none;color:var(--tx);border-radius:10px;width:40px;height:40px;font-size:20px}
+header.top #lg{margin:0 0 0 auto;max-width:none;padding:0;flex-wrap:nowrap}
+#acc{display:none}
+nav#sidenav{position:fixed;left:0;top:0;bottom:0;width:250px;z-index:60;display:flex;flex-direction:column;flex-wrap:nowrap;justify-content:flex-start;gap:2px;padding:16px 10px;overflow-y:auto;background:var(--card);border-right:1px solid var(--bd);transform:translateX(-102%);transition:transform .25s}
+nav#sidenav.open{transform:none;box-shadow:0 0 40px rgba(0,0,0,.25)}
+nav#sidenav button{width:100%;text-align:left;border:0;background:none;color:var(--mut);padding:12px;border-radius:10px;font-size:15px;font-weight:600;box-shadow:none}
+nav#sidenav button.on{background:var(--soft);color:var(--ac);box-shadow:none}
+#navbg{position:fixed;inset:0;background:rgba(0,0,0,.4);z-index:55;display:none}
+#navbg.open{display:block}
+@media (min-width:900px){nav#sidenav{transform:none;top:58px;padding-top:12px;z-index:30;box-shadow:none}.burger{display:none}#navbg{display:none!important}main,.foot{margin-left:250px}}
+.card{background:var(--card);border:1px solid var(--bd);border-radius:16px;box-shadow:0 1px 3px rgba(30,33,66,.06)}
+.card:hover{box-shadow:0 1px 3px rgba(30,33,66,.06)}
+.go{background:linear-gradient(135deg,var(--ac),var(--ac2));color:#fff;border-radius:10px;box-shadow:none}
+.go.sec{background:none;color:var(--tx);border:1px solid var(--bd)}
+.opt{border:1px solid var(--bd);color:var(--tx);background:none;border-radius:10px}
+.opt.sel{border-color:var(--ac);box-shadow:0 0 0 2px var(--ac)}
+.chip{border:1px solid var(--bd);color:var(--tx)}
+.chip.on{background:var(--ac);color:#fff;border-color:var(--ac)}
+.field input,#lg input,textarea{background:var(--card);border:1px solid var(--bd);color:var(--tx)}
+.pbox{background:var(--soft)}
+.bar{background:var(--soft)}
+.fcard{border:1px solid var(--bd);background:var(--soft)}
+table th,table td{border-color:var(--bd)}
+.hero{display:grid;grid-template-columns:1fr;background:linear-gradient(135deg,#0b1b4a 0%,#1e3a8a 55%,#3b5bdb 100%);color:#fff;border-radius:20px;overflow:hidden;margin-bottom:14px}
+.hero .ht{padding:22px 20px 6px}
+.hero h2{font-size:28px;line-height:1.12;margin:0 0 10px;color:#fff}
+.hero h2 span{background:linear-gradient(90deg,#818cf8,#c4b5fd);-webkit-background-clip:text;background-clip:text;color:transparent}
+.hero p{color:#cbd5f5;margin:0 0 14px}
+.hero .chips{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:14px}
+.hero .chips span{background:rgba(255,255,255,.12);padding:7px 12px;border-radius:12px;font-size:13px}
+.hero .go{background:#4f46e5;margin:0}
+.hero svg{width:100%;height:auto;display:block}
+@media (min-width:700px){.hero{grid-template-columns:1.1fr 1fr;align-items:center}.hero .ht{padding:30px}}
+.sgrid{display:grid;grid-template-columns:repeat(2,1fr);gap:10px;margin-bottom:14px}
+@media (min-width:700px){.sgrid{grid-template-columns:repeat(3,1fr)}}
+.sc{background:var(--card);border:1px solid var(--bd);border-radius:14px;padding:12px 14px}
+.sc small{display:block;color:var(--mut);font-size:11px;letter-spacing:.08em;text-transform:uppercase}
+.sc b{display:block;font-size:26px;margin-top:4px}
+.two{display:grid;grid-template-columns:1fr;gap:14px}
+@media (min-width:700px){.two{grid-template-columns:1fr 1fr}}
+.card small.mut{font-size:11px;letter-spacing:.1em}
+.coach{border-left:4px solid var(--ac)}
+.coach ol{margin:6px 0 10px;padding-left:20px}
+.stt{margin:18px 0 10px;font-size:20px}
+.choose{display:grid;grid-template-columns:repeat(2,1fr);gap:10px;margin-bottom:14px}
+@media (min-width:700px){.choose{grid-template-columns:repeat(5,1fr)}}
+.chc{border:0;border-radius:14px;padding:14px 10px;text-align:left;color:#1e2142;font-weight:700;font-size:15px;cursor:pointer}
+.chc small{display:block;font-weight:400;opacity:.7;margin-top:4px;font-size:12px}
+.badges{display:flex;flex-wrap:wrap;gap:8px}
+.bdg{background:var(--soft);border-radius:12px;padding:8px 10px;font-size:13px}
+.bdg.off{opacity:.35;filter:grayscale(1)}
+.mount{position:relative;border-radius:20px;overflow:hidden;color:#fff;margin:14px 0;background:#0b1230}
+.mount svg{width:100%;height:220px;display:block}
+.mount .mt{position:absolute;left:0;top:0;padding:20px;max-width:62%}
+.mount h2{color:#fff;margin:0 0 6px;font-size:19px}
+.mount h2 span{color:#a5b4fc}
+.mount p{color:#dbe4ff;margin:0}
+.mount .go{margin:10px 0 0;background:#4f46e5}
+.foot{color:var(--mut)}
+
+html,body{overflow-x:hidden}
+header.top{gap:8px;padding:0 10px}
+.brand h1{font-size:18px}
+header.top #lg{min-width:0;flex-shrink:1}
+header.top #lg .go{padding:9px 12px;font-size:14px;white-space:nowrap}
+header.top #lg input{width:110px;min-width:0;flex:none;padding:9px;font-size:14px}
+@media (min-width:430px){.brand h1{font-size:20px}header.top #lg input{width:170px}}
+
+main{max-width:none}
+section{max-width:1000px;margin-left:auto;margin-right:auto}
+@media (min-width:900px){main{padding:20px 28px 40px}.foot{margin-left:250px}}
 </style>
 </head>
 <body>
-<header><h1>🎓 EnglishLab</h1><p>Английский: уровни, тесты и аудирование</p><p id="acc"></p></header>
-<div id="lg"></div>
-<nav>
-<button class="on" data-t="teacher">🧑‍🏫 Учитель</button>
+<header class="top"><button id="menu-btn" class="burger" aria-label="Меню">☰</button><div class="brand"><svg class="logo" viewBox="0 0 40 40" width="34" height="34" role="img" aria-label="EnglishLab"><defs><linearGradient id="lgp" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#5b4fe0"/><stop offset="1" stop-color="#7b6cf6"/></linearGradient></defs><rect width="40" height="40" rx="10" fill="url(#lgp)"/><path d="M20 9L5 16l15 7 15-7z" fill="#fff"/><path d="M11 20v6c0 2 4.5 4 9 4s9-2 9-4v-6l-9 4z" fill="#fff" opacity=".85"/><path d="M33 17v9" stroke="#fff" stroke-width="2" stroke-linecap="round"/></svg><h1>English<span>Lab</span></h1></div><div id="lg"></div><p id="acc"></p></header>
+<nav id="sidenav">
+<button class="on" data-t="teacher">🏠 Главная</button>
 <button data-t="test">✅ Тесты</button>
 <button data-t="listen">🎧 Listening</button>
 <button data-t="read">📖 Reading</button>
 <button data-t="write">✍️ Writing</button>
+<button data-t="vocab">📚 Слова</button>
+<button data-t="speak">🎙 Speaking</button>
+<button data-t="sim">🏁 Симуляция</button>
+<button data-t="calc">🎯 Балл</button>
 <button data-t="mist">❗ Ошибки</button>
 <button data-t="prog">📊 Прогресс</button>
 </nav>
+<div id="navbg"></div>
 <main>
 
 <section id="teacher">
+<div id="home"></div>
 <div class="card"><h2>Учитель</h2><p class="mut">Выберите уровень и прочитайте короткое объяснение перед тестом.</p>
 <div class="row" id="tl"></div></div>
 <div class="card hide" id="tipbox"></div>
+<div class="card"><h2>📌 Структура IELTS Academic</h2>
+<p><b>Listening:</b> 30 минут, 4 части, 40 вопросов.<br><b>Reading:</b> 60 минут, 3 текста, 40 вопросов.<br><b>Writing:</b> 60 минут, Task 1 (150 слов) и Task 2 (250 слов).<br><b>Speaking:</b> разговор с экзаменатором, 11-14 минут.</p>
+<p class="mut">Оценка по каждой части от 0 до 9. Занимайтесь понемногу каждый день: тесты, слова, один текст на чтение.</p></div>
+<div class="card"><h2>⚠️ Частые ошибки русскоязычных</h2>
+<p>❌ I have a good news → ✅ I have good news<br>❌ I am agree → ✅ I agree<br>❌ He explained me the rule → ✅ He explained the rule to me<br>❌ I am working here since 2020 → ✅ I have been working here since 2020<br>❌ The people is → ✅ The people are<br>❌ I have 20 years → ✅ I am 20 years old<br>❌ It depends of → ✅ It depends on<br>❌ I am interesting in music → ✅ I am interested in music<br>❌ Many informations → ✅ A lot of information<br>❌ Despite of → ✅ Despite / In spite of</p></div>
+<div class="card"><h2>📅 План на неделю</h2>
+<p><b>Пн:</b> тест по грамматике + 10 слов<br><b>Вт:</b> один текст Reading<br><b>Ср:</b> два задания Listening + слова<br><b>Чт:</b> Writing Task 2 (план и черновик)<br><b>Пт:</b> разбор ошибок<br><b>Сб:</b> Writing Task 1 + Speaking Part 2<br><b>Вс:</b> повторение слов, затем Reading и Listening подряд на время</p></div>
 <div class="card"><p class="mut">Живой ИИ-чат подключим позже, когда будет сервер и ключ API.</p></div>
 </section>
 
@@ -109,13 +257,19 @@ nav button.on{box-shadow:0 4px 12px rgba(79,70,229,.35)}
 <button class="go" id="play">▶ Слушать</button>
 <div id="lo"></div><div id="lr" class="mut"></div>
 <button class="go hide" id="ln">Дальше</button></div>
+<div id="lbox2"></div>
 </section>
 
 <section id="read" class="hide"><div id="rbox"></div></section>
 <section id="write" class="hide"><div class="card" id="wbox"></div></section>
+<section id="sim" class="hide"><div class="card" id="simbox"></div></section>
+<section id="speak" class="hide"><div class="card" id="sbox"></div></section>
+<section id="calc" class="hide"><div class="card" id="cbox"></div></section>
+<section id="vocab" class="hide"><div class="card" id="vbox"></div></section>
 <section id="mist" class="hide"><div class="card" id="mbox"></div></section>
 <section id="prog" class="hide"><div class="card" id="pbox"></div></section>
 </main>
+<footer class="foot">EnglishLab · IELTS training</footer>
 <div id="auth-overlay" hidden>
  <div class="card auth-card">
   <button class="chip auth-x" id="auth-close" type="button">✕</button>
@@ -150,17 +304,9 @@ nav button.on{box-shadow:0 4px 12px rgba(79,70,229,.35)}
 </div>
 
 <script>
-var LV=["A1","A2","B1"];
-var TIPS={
- A1:"A1. Глагол to be: I am, he/she/it is, we/you/they are. Мн. число: cat → cats.",
- A2:"A2. Past Simple: went, saw, had. Present Continuous: is watching. any в отрицаниях и вопросах. Сравнение: more interesting.",
- B1:"B1. Present Perfect: have lived since 2020. Первое условие: If it rains, we will stay. Пассив: was broken. Косвенная речь: сдвиг времени назад."
-};
-var Q={
- A1:[{q:"I ___ a student.",o:["am","is","are"],a:0},{q:"This ___ my sister.",o:["is","am","are"],a:0},{q:"We ___ from Russia.",o:["are","is","am"],a:0},{q:"She has two ___.",o:["cat","cats","cates"],a:1}],
- A2:[{q:"Yesterday I ___ to the cinema.",o:["go","went","goes"],a:1},{q:"He ___ TV at the moment.",o:["watches","is watching","watch"],a:1},{q:"There isn't ___ milk.",o:["some","any","many"],a:1},{q:"This book is ___ than that one.",o:["interesting","more interesting","most interesting"],a:1}],
- B1:[{q:"I ___ here since 2020.",o:["live","lived","have lived"],a:2},{q:"If it rains, we ___ at home.",o:["stay","will stay","stayed"],a:1},{q:"She asked me where I ___.",o:["live","lived","living"],a:1},{q:"The window ___ by the boy.",o:["broke","was broken","breaks"],a:1}]
-};
+var LV=["A1","A2","B1","B2"];
+var TIPS={"A1": "A1. Глагол to be: I am, he/she/it is, we/you/they are. Множественное число: cat → cats. have/has: he has. Притяжательные: my, your, his, her.", "A2": "A2. Past Simple: went, saw, had (did для вопросов). Present Continuous: is watching. much с неисчисляемыми, many со счётными. Степени сравнения: taller, the tallest, more interesting. since и for.", "B1": "B1. Present Perfect: have lived since 2020. Первое условие: If it rains, we will stay. Пассив: was broken. Косвенная речь: время сдвигается назад. Конструкция wish + Past Simple.", "B2": "B2. Past Perfect: had started. Второе условие: If I were you. После suggest и deny глагол с -ing. Инверсия: Not only was he… Герундий после despite. Future Perfect: will have worked."};
+var Q={"A1": [{"q": "She ___ to school every day.", "o": ["go", "goes", "going"], "a": 1}, {"q": "I ___ a student.", "o": ["am", "is", "are"], "a": 0}, {"q": "We ___ from Russia.", "o": ["are", "is", "am"], "a": 0}, {"q": "This is my sister. ___ name is Anna.", "o": ["Her", "His", "She"], "a": 0}, {"q": "There ___ two apples on the table.", "o": ["is", "are", "am"], "a": 1}, {"q": "I have two ___.", "o": ["cat", "cats", "cates"], "a": 1}, {"q": "___ you like pizza?", "o": ["Do", "Does", "Are"], "a": 0}, {"q": "My brother ___ a car.", "o": ["have", "has", "haves"], "a": 1}, {"q": "The book is ___ the table.", "o": ["on", "at", "in"], "a": 0}, {"q": "What time ___ it?", "o": ["is", "are", "does"], "a": 0}, {"q": "My mother ___ a teacher.", "o": ["is", "are", "am"], "a": 0}, {"q": "They ___ playing football now.", "o": ["is", "are", "am"], "a": 1}, {"q": "I ___ coffee in the morning.", "o": ["drink", "drinks", "drinking"], "a": 0}, {"q": "Where ___ you from?", "o": ["is", "are", "do"], "a": 1}, {"q": "She ___ like fish.", "o": ["don't", "doesn't", "isn't"], "a": 1}, {"q": "There ___ a cat under the table.", "o": ["is", "are", "have"], "a": 0}, {"q": "Can you ___ me, please?", "o": ["help", "helps", "to help"], "a": 0}, {"q": "It is ___ hot day today.", "o": ["a", "an", "two"], "a": 0}], "A2": [{"q": "Yesterday I ___ to the cinema.", "o": ["go", "went", "goes"], "a": 1}, {"q": "He ___ TV at the moment.", "o": ["watches", "is watching", "watch"], "a": 1}, {"q": "There isn't ___ milk in the fridge.", "o": ["some", "any", "many"], "a": 1}, {"q": "This book is ___ than that one.", "o": ["interesting", "more interesting", "most interesting"], "a": 1}, {"q": "I ___ my homework before dinner yesterday.", "o": ["do", "did", "done"], "a": 1}, {"q": "How ___ water do you drink every day?", "o": ["many", "much", "few"], "a": 1}, {"q": "We ___ visit our grandparents next Sunday.", "o": ["are going to", "going", "goes to"], "a": 0}, {"q": "She is the ___ student in the class.", "o": ["tall", "taller", "tallest"], "a": 2}, {"q": "If you ___ hungry, eat something.", "o": ["are", "will", "were"], "a": 0}, {"q": "I haven't seen him ___ Monday.", "o": ["for", "since", "during"], "a": 1}, {"q": "I ___ TV when you called.", "o": ["watched", "was watching", "watch"], "a": 1}, {"q": "She has lived here ___ five years.", "o": ["since", "for", "from"], "a": 1}, {"q": "If it ___ tomorrow, we will stay home.", "o": ["rains", "will rain", "rained"], "a": 0}, {"q": "He is ___ than his brother.", "o": ["more tall", "taller", "tallest"], "a": 1}, {"q": "We ___ to the park last Saturday.", "o": ["go", "went", "gone"], "a": 1}, {"q": "You ___ smoke here. It is forbidden.", "o": ["must not", "do not have to", "need not"], "a": 0}, {"q": "How ___ apples do you want?", "o": ["much", "many", "lot"], "a": 1}, {"q": "I am looking forward ___ you.", "o": ["to see", "to seeing", "seeing"], "a": 1}], "B1": [{"q": "I ___ here since 2020.", "o": ["live", "lived", "have lived"], "a": 2}, {"q": "If it rains, we ___ at home.", "o": ["stay", "will stay", "stayed"], "a": 1}, {"q": "She asked me where I ___.", "o": ["live", "lived", "living"], "a": 1}, {"q": "The window ___ by the boy.", "o": ["broke", "was broken", "breaks"], "a": 1}, {"q": "He said he ___ call me later.", "o": ["will", "would", "is"], "a": 1}, {"q": "I ___ English for five years.", "o": ["study", "am studying", "have been studying"], "a": 2}, {"q": "You ___ wear a seatbelt. It is the law.", "o": ["must", "might", "may"], "a": 0}, {"q": "The film was so boring ___ I fell asleep.", "o": ["that", "than", "as"], "a": 0}, {"q": "I wish I ___ more free time.", "o": ["have", "had", "will have"], "a": 1}, {"q": "She is used to ___ up early.", "o": ["get", "getting", "got"], "a": 1}, {"q": "She said that she ___ tired.", "o": ["is", "was", "will be"], "a": 1}, {"q": "I ___ him since last year.", "o": ["did not see", "have not seen", "do not see"], "a": 1}, {"q": "If I ___ rich, I would travel the world.", "o": ["am", "were", "will be"], "a": 1}, {"q": "The house ___ built in 1990.", "o": ["is", "was", "has"], "a": 1}, {"q": "He asked me ___ I was doing.", "o": ["what", "that", "which"], "a": 0}, {"q": "We ___ finished when she arrived.", "o": ["already", "had already", "have already"], "a": 1}, {"q": "It is the ___ film I have ever seen.", "o": ["good", "better", "best"], "a": 2}, {"q": "I ___ stay at home than go out tonight.", "o": ["would rather", "had rather to", "would better"], "a": 0}], "B2": [{"q": "By the time we arrived, the film ___.", "o": ["already started", "had already started", "has already started"], "a": 1}, {"q": "If I ___ you, I would accept the offer.", "o": ["am", "was", "were"], "a": 2}, {"q": "She suggested ___ a taxi.", "o": ["to take", "taking", "take"], "a": 1}, {"q": "Not only ___ late, but he also forgot the documents.", "o": ["he was", "was he", "did he"], "a": 1}, {"q": "The report ___ by Friday.", "o": ["must finish", "must be finished", "must finishing"], "a": 1}, {"q": "I would rather you ___ smoke here.", "o": ["do not", "did not", "will not"], "a": 1}, {"q": "Despite ___ tired, she finished the work.", "o": ["be", "being", "to be"], "a": 1}, {"q": "He denied ___ the window.", "o": ["break", "breaking", "to break"], "a": 1}, {"q": "By next year, I ___ here for ten years.", "o": ["will work", "will have worked", "have worked"], "a": 1}, {"q": "The more you practise, ___ you become.", "o": ["the better", "better", "best"], "a": 0}, {"q": "Had I known, I ___ differently.", "o": ["would act", "would have acted", "acted"], "a": 1}, {"q": "He is said ___ the company ten years ago.", "o": ["to found", "to have founded", "founding"], "a": 1}, {"q": "The more I think about it, ___ I like it.", "o": ["the less", "less", "least"], "a": 0}, {"q": "She insisted ___ paying for the meal.", "o": ["in", "on", "at"], "a": 1}, {"q": "I wish I ___ you the truth yesterday.", "o": ["told", "had told", "would tell"], "a": 1}, {"q": "Hardly ___ the room when the phone rang.", "o": ["he entered", "had he entered", "did he enter"], "a": 1}, {"q": "We are looking for someone ___ can speak three languages.", "o": ["which", "who", "whom"], "a": 1}, {"q": "No sooner had she left ___ it started to rain.", "o": ["when", "than", "that"], "a": 1}]};
 var L=[
  {s:"I would like a cup of coffee",o:["I would like a cup of coffee","I would like a cup of tea","I will like a cup of coffee"]},
  {s:"Where is the nearest station",o:["Where is the nearest station","Where is the next station","What is the nearest station"]},
@@ -186,17 +332,23 @@ function drawLogin(){
 }
 drawLogin();
 var DB=null,UID=null,tm=null;
-function save(){try{localStorage.setItem(KEY(),JSON.stringify(S))}catch(e){}
+function save(){touchStreak();try{localStorage.setItem(KEY(),JSON.stringify(S))}catch(e){}
  if(DB&&UID){clearTimeout(tm);tm=setTimeout(function(){DB.doc("data/users/"+UID+"/progress").set({json:JSON.stringify(S)}).catch(function(){})},800)}}
 function $(i){return document.getElementById(i)}
-var TABS=["teacher","test","listen","read","write","mist","prog"];
+var TABS=["teacher","test","listen","read","write","vocab","speak","sim","calc","mist","prog"];
 function show(t){
+  $("sidenav").classList.remove("open");$("navbg").classList.remove("open");
   document.querySelectorAll("nav button").forEach(function(x){x.classList.toggle("on",x.dataset.t===t)});
   TABS.forEach(function(x){$(x).classList.toggle("hide",x!==t)});
   if(t==="mist")drawMist();
   if(t==="prog")drawProg();
   if(t==="read")drawRead();
   if(t==="write")drawWrite();
+  if(t==="vocab")drawVocab();
+  if(t==="speak")drawSpeak();
+  if(t==="sim")drawSim();
+  if(t==="calc")drawCalc();
+  if(t==="teacher")drawHome();
 }
 document.querySelectorAll("nav button").forEach(function(b){b.onclick=function(){show(b.dataset.t)}});
 
@@ -211,7 +363,7 @@ function runTest(l,list){clevel=l;cur=list;ci=0;sc=0;$("pick").classList.add("hi
 function nextQ(){
   var el=$("qbox");
   if(ci>=cur.length){
-    if(clevel!=="Повтор"){var o=S.res[clevel]||{best:0,tries:0};o.tries++;o.best=Math.max(o.best,sc);o.total=cur.length;S.res[clevel]=o;save()}
+    if(clevel!=="Повтор"){var o=S.res[clevel]||{best:0,tries:0};o.tries++;o.best=Math.max(o.best,sc);o.total=cur.length;S.res[clevel]=o;addHist("test",sc,cur.length,clevel)}
     el.innerHTML="<h2>Готово!</h2><p>Результат: "+sc+" из "+cur.length+"</p>";
     var b=document.createElement("button");b.className="go";b.textContent="К выбору";b.onclick=function(){$("pick").classList.remove("hide");el.classList.add("hide")};el.appendChild(b);return;
   }
@@ -257,12 +409,18 @@ function drawProg(){
 }
 
 var READ=[{"title": "Urban Ecology (Academic)", "text": "The rapid expansion of urban areas around the globe has triggered a profound shift in ecological dynamics, forcing various animal and plant species to adapt, relocate, or face extinction. Urban ecology, a relatively recent scientific discipline, focuses on understanding how organisms manage to survive—and occasionally thrive—within concrete jungles. Unlike traditional natural habitats, cities present a unique combination of challenges, including elevated temperatures, artificial light at night, habitat fragmentation, and high levels of noise pollution. Despite these harsh conditions, certain species, often referred to as urban adapters, have demonstrated remarkable behavioral and physiological flexibility. For instance, avian species such as the European starling and the peregrine falcon have altered their vocalizations to cut through urban noise and utilized tall architectural structures as substitutes for natural cliffs. Furthermore, researchers have discovered that urban plants often flower earlier than their rural counterparts due to the urban heat island effect. However, while these resilient creatures manage to persist, the overall biodiversity in heavily urbanized zones tends to decline sharply. Conservationists argue that future urban planning must integrate green infrastructure, such as wildlife corridors, rooftop gardens, and protected parks, to bridge the gap between human development and environmental preservation. Without deliberate intervention, the urban landscape may eventually become a sterile environment dominated exclusively by a handful of ultra-hardy generalist species.", "qs": [{"q": "What is the primary focus of the discipline known as urban ecology?", "o": ["Designing energy-efficient buildings for expanding cities", "Understanding how organisms survive and thrive in urban environments", "Finding methods to relocate endangered wildlife to rural reserves", "Measuring the exact levels of noise and light pollution in modern metropolises"], "a": 1}, {"q": "Which of the following is NOT mentioned as a challenge presented by cities to wildlife?", "o": ["Elevated temperatures", "Toxic chemical waste in rivers", "Artificial light at night", "Habitat fragmentation"], "a": 1}, {"q": "How have peregrine falcons adapted to urban environments according to the text?", "o": ["By hunting exclusively at night", "By changing their migratory routes", "By utilizing tall buildings instead of natural cliffs", "By developing resistance to urban noise pollution"], "a": 2}, {"q": "Why do urban plants tend to flower earlier than rural plants?", "o": ["Because of artificial street lighting", "Due to higher levels of carbon dioxide", "Because of the urban heat island effect", "Due to frequent watering by city maintenance"], "a": 2}, {"q": "What effect does heavy urbanization typically have on overall biodiversity?", "o": ["It causes biodiversity to decline sharply", "It temporarily increases the number of rare species", "It has no noticeable impact on local flora and fauna", "It encourages the evolution of completely new mammal species"], "a": 0}, {"q": "What solution do conservationists propose for future urban planning?", "o": ["Restricting human population growth in metropolitan zones", "Integrating green infrastructure like wildlife corridors and rooftop gardens", "Relocating all major industrial zones outside city limits", "Banning artificial lighting in public parks after sunset"], "a": 1}, {"q": "According to the text, European starlings have adapted by...", "o": ["altering their vocalizations to cut through urban noise.", "changing their feather color to match concrete.", "nesting inside underground subway tunnels.", "forming symbiotic relationships with domestic pets."], "a": 0}, {"q": "What might happen to the urban landscape without deliberate intervention?", "o": ["It will naturally return to its original forest state", "It will become dominated exclusively by a handful of ultra-hardy generalist species", "It will experience a massive surge in rare plant varieties", "It will completely collapse due to structural failures"], "a": 1}]},
+{"title": "The Four-Day Week (True / False / Not Given)", "text": "In recent years, several companies have tested a four-day working week, in which employees work for four days but receive the same salary as before. Supporters argue that shorter weeks reduce stress and help people balance work and family life. In one pilot programme involving thirty firms, most managers reported that productivity stayed the same or improved. Critics, however, point out that not every job can be compressed into four days. Hospitals, for example, need staff to be available every day. Some employees also said that their working days became longer and more tiring. The pilot lasted six months, and nearly all of the firms chose to continue the new schedule afterwards. Researchers say that longer studies are needed before governments consider changing the law.", "qs": [{"q": "Employees in the pilot programme received a lower salary.", "o": ["True", "False", "Not Given"], "a": 1}, {"q": "Hospitals are given as an example of workplaces that need daily staff.", "o": ["True", "False", "Not Given"], "a": 0}, {"q": "The pilot programme lasted one year.", "o": ["True", "False", "Not Given"], "a": 1}, {"q": "Governments in Europe have already changed the law.", "o": ["True", "False", "Not Given"], "a": 2}, {"q": "Most managers said productivity stayed the same or improved.", "o": ["True", "False", "Not Given"], "a": 0}]},
+{"title": "Sleep and Memory (True / False / Not Given)", "text": "Scientists have long known that sleep is important for health, but recent studies show it also plays a key role in memory. During deep sleep, the brain appears to replay events from the day and move important information into long-term storage. In one experiment, students who slept for eight hours after learning new words remembered more of them than students who stayed awake. Researchers also found that short naps of twenty minutes can improve alertness, although they have little effect on long-term memory. Many teenagers sleep less than recommended because of early school start times and late-night screen use. Some schools that moved the start of lessons by one hour reported better attendance. Experts believe more research is needed to understand how much sleep different age groups really need.", "qs": [{"q": "Deep sleep helps the brain move information into long-term storage.", "o": ["True", "False", "Not Given"], "a": 0}, {"q": "Students who stayed awake remembered more words than those who slept.", "o": ["True", "False", "Not Given"], "a": 1}, {"q": "Twenty-minute naps greatly improve long-term memory.", "o": ["True", "False", "Not Given"], "a": 1}, {"q": "Schools that started lessons later reported better attendance.", "o": ["True", "False", "Not Given"], "a": 0}, {"q": "Adults need more sleep than teenagers.", "o": ["True", "False", "Not Given"], "a": 2}]},
+{"title": "The History of Tea (True / False / Not Given)", "text": "Tea is believed to have originated in China more than two thousand years ago. According to legend, leaves from a wild tree fell into a bowl of boiling water belonging to an emperor, who liked the taste. For centuries, tea was used mainly as medicine before becoming an everyday drink. In the seventeenth century, Dutch traders brought tea to Europe, where it was first popular among wealthy families because of its high price. Over time, imports increased and the price fell, so ordinary people could afford it. Today, tea is the most widely consumed drink in the world after water, and the largest producers include India, China and Kenya.", "qs": [{"q": "For many centuries tea was used mainly as medicine.", "o": ["True", "False", "Not Given"], "a": 0}, {"q": "Dutch traders brought tea to Europe in the eighteenth century.", "o": ["True", "False", "Not Given"], "a": 1}, {"q": "Tea was cheap in Europe from the beginning.", "o": ["True", "False", "Not Given"], "a": 1}, {"q": "Kenya produces more tea than China.", "o": ["True", "False", "Not Given"], "a": 2}, {"q": "After water, tea is the most widely consumed drink in the world.", "o": ["True", "False", "Not Given"], "a": 0}]},
+{"title": "Electric Vehicles (True / False / Not Given)", "text": "Electric vehicles have grown rapidly in popularity as governments introduce stricter rules on carbon emissions. Their main advantage is that they produce no exhaust gases while driving, which improves air quality in cities. However, producing the batteries requires large amounts of energy and minerals such as lithium and cobalt, and mining these materials can harm the environment. Another challenge is the lack of charging stations, especially in rural areas. Manufacturers are investing in faster chargers and in batteries that last longer. Experts say that the total environmental impact of an electric car depends largely on how the electricity used to charge it is produced.", "qs": [{"q": "Electric vehicles produce no exhaust gases while driving.", "o": ["True", "False", "Not Given"], "a": 0}, {"q": "Producing batteries requires a lot of energy.", "o": ["True", "False", "Not Given"], "a": 0}, {"q": "Charging stations are equally available in rural areas and in cities.", "o": ["True", "False", "Not Given"], "a": 1}, {"q": "Electric cars are cheaper to buy than petrol cars.", "o": ["True", "False", "Not Given"], "a": 2}, {"q": "The environmental impact depends on how the electricity is produced.", "o": ["True", "False", "Not Given"], "a": 0}]},
+{"title": "Urban Noise (True / False / Not Given)", "text": "Noise is one of the most common complaints among city residents. Traffic, building work and loud music are the main sources. Research shows that long-term exposure to loud sounds can raise stress levels and make it harder to sleep. Some cities have introduced quiet zones near hospitals and schools, and many now require new buildings to include sound insulation. In addition, electric buses and trams are quieter than diesel ones. However, residents of older districts often live next to busy roads, where improvements are more difficult. Experts suggest that planting trees along streets can help a little, although the effect is small compared with reducing traffic itself.", "qs": [{"q": "Traffic is one of the main sources of city noise.", "o": ["True", "False", "Not Given"], "a": 0}, {"q": "Long-term noise can make it harder to sleep.", "o": ["True", "False", "Not Given"], "a": 0}, {"q": "Every city requires sound insulation in all new buildings.", "o": ["True", "False", "Not Given"], "a": 1}, {"q": "Planting trees is the most effective way to reduce noise.", "o": ["True", "False", "Not Given"], "a": 1}, {"q": "Noise levels in Berlin have fallen in recent years.", "o": ["True", "False", "Not Given"], "a": 2}]},
+{"title": "Coral Reefs (True / False / Not Given)", "text": "Coral reefs cover less than one percent of the ocean floor, yet they support about a quarter of all marine species. Reefs protect coastlines from storms and provide food and jobs for millions of people. However, rising sea temperatures cause corals to lose their colour and often die, a process known as bleaching. Pollution and overfishing add further pressure. Scientists are testing ways to help reefs recover, such as growing corals in nurseries and moving heat-resistant varieties to damaged areas. Tourism can also harm reefs when visitors touch or damage the coral, so some countries limit the number of divers allowed each day.", "qs": [{"q": "Coral reefs cover more than ten percent of the ocean floor.", "o": ["True", "False", "Not Given"], "a": 1}, {"q": "Reefs help to protect coastlines from storms.", "o": ["True", "False", "Not Given"], "a": 0}, {"q": "Bleaching is linked to rising sea temperatures.", "o": ["True", "False", "Not Given"], "a": 0}, {"q": "All countries have banned diving on coral reefs.", "o": ["True", "False", "Not Given"], "a": 1}, {"q": "Most damaged reefs have already been fully restored.", "o": ["True", "False", "Not Given"], "a": 2}]},
 {title:"Sample: Urban Gardens",text:"Urban gardens have become increasingly popular in large cities over the past two decades. Residents use rooftops, balconies and unused land to grow vegetables and herbs. Supporters say these gardens reduce food costs and bring neighbours together. Critics argue that the amount of food produced is too small to make a real difference to city food supplies. A recent survey found that most gardeners joined for social reasons rather than to save money.",qs:[
 {q:"Urban gardens have become less popular in recent years.",o:["True","False","Not Given"],a:1},
 {q:"Most gardeners joined mainly to save money.",o:["True","False","Not Given"],a:1},
 {q:"Urban gardens are legal in every large city.",o:["True","False","Not Given"],a:2},
 {q:"Some people believe urban gardens produce too little food to matter.",o:["True","False","Not Given"],a:0}]}];
-var WRITE=[{"t": "Task 1: Weekly library visits", "min": 150, "p": "The figures below show the number of visits to a university library on weekdays in two different years. Summarise the information by selecting and reporting the main features, and make comparisons where relevant.", "table": [["Day", "2020", "2025"], ["Monday", "120", "160"], ["Tuesday", "150", "190"], ["Wednesday", "180", "240"], ["Thursday", "160", "220"], ["Friday", "110", "170"]], "sample": "The line graph compares the number of visits to a university library from Monday to Friday in 2020 and 2025.\n\nOverall, the library attracted more visitors on every weekday in 2025 than in 2020. In both years, Wednesday was the busiest day, while Friday had the lowest number of visits in 2020.\n\nIn 2020, library visits increased from 120 on Monday to 180 on Wednesday. The figure then declined to 160 on Thursday before falling further to 110 on Friday. This indicates that attendance generally rose during the first half of the week and decreased afterwards.\n\nA similar pattern can be seen in 2025, although the numbers were considerably higher. Visits began at 160 on Monday and reached 190 on Tuesday, before peaking at 240 on Wednesday. The figure then dropped slightly to 220 on Thursday and fell to 170 on Friday. The largest difference between the two years occurred on Wednesday and Thursday, when the library recorded 60 more visits in 2025. Overall, the data suggest that weekday library use increased over the five-year period.", "crit": ["Include a clear overview, accurate key figures and relevant comparisons.", "Organise the answer into logical paragraphs and use linking words naturally.", "Use varied, accurate vocabulary for trends and comparisons.", "Use a mixture of simple and complex sentences with good grammatical control."]}, {"t": "Task 1: Household recycling rates", "min": 150, "p": "The table shows the percentage of household waste recycled in three towns in 2015 and 2025. Summarise the information by selecting and reporting the main features, and make comparisons where relevant.", "table": [["Town", "2015 (%)", "2025 (%)"], ["Oakville", "35", "54"], ["Riverton", "28", "46"], ["Hillford", "42", "48"]], "sample": "The table compares household recycling rates in three towns in 2015 and 2025.\n\nOverall, recycling rates increased in all three locations. Oakville experienced the largest improvement and had the highest rate by 2025, whereas Hillford recorded the smallest rise.\n\nIn 2015, Hillford had the highest recycling rate, at 42%, followed by Oakville at 35%. Riverton had the lowest figure, with just 28% of household waste being recycled. The difference between the highest and lowest rates was therefore 14 percentage points.\n\nBy 2025, Oakville’s rate had risen substantially to 54%, an increase of 19 percentage points. Riverton also made considerable progress, climbing from 28% to 46%, a rise of 18 percentage points. In comparison, Hillford’s figure increased by only six percentage points, reaching 48%. As a result, Oakville moved from second place to first, while Hillford’s position changed from first to second. The figures indicate that recycling became more common in every town during the period.", "crit": ["Summarise the main patterns and compare the figures without adding unsupported explanations.", "Group related information and present it in a clear sequence.", "Use precise terms such as ‘rose’, ‘climbed’ and ‘percentage points’.", "Demonstrate accurate tense use and a range of sentence structures."]}, {"t": "Task 2: Technology and education", "min": 250, "p": "Some people believe that online learning will eventually replace most classroom teaching. Others think that traditional classrooms will always be necessary. Discuss both views and give your own opinion.", "sample": "Online education has become increasingly common, leading some people to predict that it will replace traditional classroom teaching. While digital learning offers considerable advantages, I believe that physical classrooms will remain important because of the interaction and support they provide.\n\nOn the one hand, online learning gives students greater flexibility. They can study from home, access recorded lessons and often learn at a time that suits their schedule. This can be especially useful for people who live far from educational institutions or need to combine study with work. In addition, digital platforms can provide a wide range of resources, allowing learners to review difficult topics at their own pace.\n\nOn the other hand, classroom education offers benefits that are difficult to reproduce online. Students can ask questions immediately, participate in group discussions and receive direct feedback from teachers. Being physically present with classmates may also help learners develop communication and teamwork skills. Furthermore, some students find it easier to concentrate in a structured classroom than when studying alone at home.\n\nIn my view, neither method should completely replace the other. A combination of online resources and face-to-face lessons is likely to provide the most effective approach. For example, students could watch explanatory videos before class and then use classroom time to solve problems and discuss ideas with their teachers.\n\nIn conclusion, online learning is flexible and convenient, but traditional classrooms continue to offer valuable social and educational benefits. A blended approach can make the best use of both methods.", "crit": ["Discuss both views, state a clear position and support ideas with explanations or examples.", "Use clear paragraphing and logical progression.", "Use topic-specific vocabulary accurately and avoid unnecessary repetition.", "Use varied sentence structures with generally accurate grammar."]}, {"t": "Task 2: Public transport and the environment", "min": 250, "p": "In many cities, traffic congestion and air pollution are increasing. Some people think governments should invest more in public transport, while others believe improving roads is a better solution. Discuss both views and give your own opinion.", "sample": "Traffic congestion and air pollution are serious challenges in many urban areas. Some people argue that governments should prioritise public transport, whereas others support spending more money on roads. Although road improvements can be useful, I believe investment in reliable public transport is a more sustainable long-term solution.\n\nThose who support road development argue that better roads can reduce delays and improve access to different parts of a city. New junctions and well-maintained roads may help vehicles move more efficiently, particularly in areas where infrastructure is inadequate. Road improvements can also benefit buses, delivery services and emergency vehicles. However, expanding road capacity may encourage more people to drive, which can eventually recreate congestion.\n\nIn contrast, effective public transport can carry large numbers of passengers using less road space per person. If buses and trains are frequent, affordable and reliable, commuters may choose them instead of private cars. This could reduce the number of vehicles on the road and help lower pollution. Public transport can also improve mobility for people who cannot drive or afford a car. Nevertheless, these benefits depend on good planning, sufficient capacity and convenient routes.\n\nIn my opinion, governments should place greater emphasis on public transport while continuing to maintain essential roads. For instance, introducing dedicated bus lanes and improving connections between residential areas and workplaces could make public transport more attractive. Road repairs would still be necessary, but building more roads should not be the main strategy.\n\nIn conclusion, road improvements can address certain transport problems, but investment in accessible public transport is more likely to reduce congestion and environmental damage over time.", "crit": ["Address both positions, give a clear opinion and develop relevant supporting points.", "Structure the argument into a clear introduction, body paragraphs and conclusion.", "Use accurate vocabulary related to transport, congestion and pollution.", "Use complex sentences and accurate grammatical forms."]}];
+var WRITE=[{"t": "Task 1: Weekly library visits", "min": 150, "p": "The figures below show the number of visits to a university library on weekdays in two different years. Summarise the information by selecting and reporting the main features, and make comparisons where relevant.", "table": [["Day", "2020", "2025"], ["Monday", "120", "160"], ["Tuesday", "150", "190"], ["Wednesday", "180", "240"], ["Thursday", "160", "220"], ["Friday", "110", "170"]], "sample": "The line graph compares the number of visits to a university library from Monday to Friday in 2020 and 2025.\n\nOverall, the library attracted more visitors on every weekday in 2025 than in 2020. In both years, Wednesday was the busiest day, while Friday had the lowest number of visits in 2020.\n\nIn 2020, library visits increased from 120 on Monday to 180 on Wednesday. The figure then declined to 160 on Thursday before falling further to 110 on Friday. This indicates that attendance generally rose during the first half of the week and decreased afterwards.\n\nA similar pattern can be seen in 2025, although the numbers were considerably higher. Visits began at 160 on Monday and reached 190 on Tuesday, before peaking at 240 on Wednesday. The figure then dropped slightly to 220 on Thursday and fell to 170 on Friday. The largest difference between the two years occurred on Wednesday and Thursday, when the library recorded 60 more visits in 2025. Overall, the data suggest that weekday library use increased over the five-year period.", "crit": ["Include a clear overview, accurate key figures and relevant comparisons.", "Organise the answer into logical paragraphs and use linking words naturally.", "Use varied, accurate vocabulary for trends and comparisons.", "Use a mixture of simple and complex sentences with good grammatical control."]}, {"t": "Task 1: Household recycling rates", "min": 150, "p": "The table shows the percentage of household waste recycled in three towns in 2015 and 2025. Summarise the information by selecting and reporting the main features, and make comparisons where relevant.", "table": [["Town", "2015 (%)", "2025 (%)"], ["Oakville", "35", "54"], ["Riverton", "28", "46"], ["Hillford", "42", "48"]], "sample": "The table compares household recycling rates in three towns in 2015 and 2025.\n\nOverall, recycling rates increased in all three locations. Oakville experienced the largest improvement and had the highest rate by 2025, whereas Hillford recorded the smallest rise.\n\nIn 2015, Hillford had the highest recycling rate, at 42%, followed by Oakville at 35%. Riverton had the lowest figure, with just 28% of household waste being recycled. The difference between the highest and lowest rates was therefore 14 percentage points.\n\nBy 2025, Oakville’s rate had risen substantially to 54%, an increase of 19 percentage points. Riverton also made considerable progress, climbing from 28% to 46%, a rise of 18 percentage points. In comparison, Hillford’s figure increased by only six percentage points, reaching 48%. As a result, Oakville moved from second place to first, while Hillford’s position changed from first to second. The figures indicate that recycling became more common in every town during the period.", "crit": ["Summarise the main patterns and compare the figures without adding unsupported explanations.", "Group related information and present it in a clear sequence.", "Use precise terms such as ‘rose’, ‘climbed’ and ‘percentage points’.", "Demonstrate accurate tense use and a range of sentence structures."]}, {"t": "Task 2: Technology and education", "min": 250, "p": "Some people believe that online learning will eventually replace most classroom teaching. Others think that traditional classrooms will always be necessary. Discuss both views and give your own opinion.", "sample": "Online education has become increasingly common, leading some people to predict that it will replace traditional classroom teaching. While digital learning offers considerable advantages, I believe that physical classrooms will remain important because of the interaction and support they provide.\n\nOn the one hand, online learning gives students greater flexibility. They can study from home, access recorded lessons and often learn at a time that suits their schedule. This can be especially useful for people who live far from educational institutions or need to combine study with work. In addition, digital platforms can provide a wide range of resources, allowing learners to review difficult topics at their own pace.\n\nOn the other hand, classroom education offers benefits that are difficult to reproduce online. Students can ask questions immediately, participate in group discussions and receive direct feedback from teachers. Being physically present with classmates may also help learners develop communication and teamwork skills. Furthermore, some students find it easier to concentrate in a structured classroom than when studying alone at home.\n\nIn my view, neither method should completely replace the other. A combination of online resources and face-to-face lessons is likely to provide the most effective approach. For example, students could watch explanatory videos before class and then use classroom time to solve problems and discuss ideas with their teachers.\n\nIn conclusion, online learning is flexible and convenient, but traditional classrooms continue to offer valuable social and educational benefits. A blended approach can make the best use of both methods.", "crit": ["Discuss both views, state a clear position and support ideas with explanations or examples.", "Use clear paragraphing and logical progression.", "Use topic-specific vocabulary accurately and avoid unnecessary repetition.", "Use varied sentence structures with generally accurate grammar."]}, {"t": "Task 2: Public transport and the environment", "min": 250, "p": "In many cities, traffic congestion and air pollution are increasing. Some people think governments should invest more in public transport, while others believe improving roads is a better solution. Discuss both views and give your own opinion.", "sample": "Traffic congestion and air pollution are serious challenges in many urban areas. Some people argue that governments should prioritise public transport, whereas others support spending more money on roads. Although road improvements can be useful, I believe investment in reliable public transport is a more sustainable long-term solution.\n\nThose who support road development argue that better roads can reduce delays and improve access to different parts of a city. New junctions and well-maintained roads may help vehicles move more efficiently, particularly in areas where infrastructure is inadequate. Road improvements can also benefit buses, delivery services and emergency vehicles. However, expanding road capacity may encourage more people to drive, which can eventually recreate congestion.\n\nIn contrast, effective public transport can carry large numbers of passengers using less road space per person. If buses and trains are frequent, affordable and reliable, commuters may choose them instead of private cars. This could reduce the number of vehicles on the road and help lower pollution. Public transport can also improve mobility for people who cannot drive or afford a car. Nevertheless, these benefits depend on good planning, sufficient capacity and convenient routes.\n\nIn my opinion, governments should place greater emphasis on public transport while continuing to maintain essential roads. For instance, introducing dedicated bus lanes and improving connections between residential areas and workplaces could make public transport more attractive. Road repairs would still be necessary, but building more roads should not be the main strategy.\n\nIn conclusion, road improvements can address certain transport problems, but investment in accessible public transport is more likely to reduce congestion and environmental damage over time.", "crit": ["Address both positions, give a clear opinion and develop relevant supporting points.", "Structure the argument into a clear introduction, body paragraphs and conclusion.", "Use accurate vocabulary related to transport, congestion and pollution.", "Use complex sentences and accurate grammatical forms."]}, {"t": "Task 2: Languages at school", "min": 250, "p": "Some people think that children should start learning a foreign language at primary school, while others think it is better to wait until secondary school. Discuss both views and give your own opinion.", "outline": true, "sample": "Введение: перефразируйте тему и скажите, какое мнение разделяете.\n\nАбзац 1: за ранний старт. Дети лучше усваивают произношение, больше времени для практики.\n\nАбзац 2: за поздний старт. Сначала родной язык и базовые предметы, старшие дети учат осознаннее.\n\nАбзац 3: ваше мнение, например: начинать рано, но в игровой форме.\n\nВывод: кратко повторите позицию.\n\nПолезные фразы: It is widely believed that…; On the one hand… On the other hand…; In my opinion…; This is mainly because…", "crit": ["Discuss both views, state a clear position and support ideas with explanations or examples.", "Use clear paragraphing and logical progression.", "Use topic-specific vocabulary accurately and avoid unnecessary repetition.", "Use varied sentence structures with generally accurate grammar."]}, {"t": "Task 2: Working from home", "min": 250, "p": "Nowadays many people choose to work from home. Do the advantages of this outweigh the disadvantages?", "outline": true, "sample": "Введение: перефразируйте тему и ответьте прямо: преимущества перевешивают (или нет).\n\nАбзац 1: плюсы. Экономия времени на дорогу, гибкий график, меньше расходов.\n\nАбзац 2: минусы. Меньше общения, сложнее отделить работу от отдыха.\n\nАбзац 3: почему плюсы сильнее (приведите пример) или оговорка, при каких условиях это верно.\n\nВывод: повторите позицию другими словами.\n\nПолезные фразы: The main advantage is…; A further drawback is…; Overall, I believe that…; outweigh.", "crit": ["Discuss both views, state a clear position and support ideas with explanations or examples.", "Use clear paragraphing and logical progression.", "Use topic-specific vocabulary accurately and avoid unnecessary repetition.", "Use varied sentence structures with generally accurate grammar."]}, {"t": "Task 2: Phones and concentration", "min": 250, "p": "Many people find it difficult to concentrate on their studies because of mobile phones. What are the causes of this problem and what can be done to solve it?", "outline": true, "sample": "Введение: обозначьте проблему и скажите, что рассмотрите причины и решения.\n\nАбзац 1: причины. Постоянные уведомления, социальные сети, привычка проверять телефон.\n\nАбзац 2: решения. Режим «не беспокоить», телефон в другой комнате во время занятий, правила в школах.\n\nАбзац 3: кто отвечает за решение: сами студенты, семья, школа.\n\nВывод: кратко подведите итог.\n\nПолезные фразы: One of the main causes is…; This can be solved by…; Schools could introduce…; as a result.", "crit": ["Discuss both views, state a clear position and support ideas with explanations or examples.", "Use clear paragraphing and logical progression.", "Use topic-specific vocabulary accurately and avoid unnecessary repetition.", "Use varied sentence structures with generally accurate grammar."]}, {"t": "Task 2: Volunteering", "min": 250, "p": "In some countries, young people are encouraged to do voluntary work. What are the benefits of this for individuals and society?", "outline": true, "sample": "Введение: перефразируйте тему и скажите, что есть пользы для человека и для общества.\n\nАбзац 1: польза для человека. Опыт, навыки, уверенность, помощь в поиске работы.\n\nАбзац 2: польза для общества. Помощь нуждающимся, сильнее сообщества, экономия средств.\n\nАбзац 3: короткий пример (например, помощь в приюте или библиотеке).\n\nВывод: повторите главную мысль.\n\nПолезные фразы: gain valuable experience; give something back to the community; contribute to…; as well as.", "crit": ["Discuss both views, state a clear position and support ideas with explanations or examples.", "Use clear paragraphing and logical progression.", "Use topic-specific vocabulary accurately and avoid unnecessary repetition.", "Use varied sentence structures with generally accurate grammar."]}, {"t": "Task 1: Student time use", "min": 150, "p": "The table shows the average number of hours per week that students spent on three activities in 2010 and 2020. Summarise the information by selecting and reporting the main features, and make comparisons where relevant.", "table": [["Activity", "2010 (hours)", "2020 (hours)"], ["Studying", "22", "25"], ["Social media", "4", "14"], ["Sport", "6", "5"]], "outline": true, "sample": "Абзац 1: перефразируйте задание (The table compares… in 2010 and 2020).\n\nАбзац 2 (overview): самое заметное, например, время в соцсетях выросло сильнее всего, а спорт немного снизился.\n\nАбзац 3: детали. Учёба выросла с 22 до 25 часов, соцсети с 4 до 14 часов (рост в 3,5 раза), спорт упал с 6 до 5.\n\nАбзац 4 (по желанию): сравнение, например, в 2020 году соцсетям уделялось почти столько же времени, сколько и спорту и ещё больше.\n\nПолезные слова: rose, climbed, increased, fell, dropped, remained stable, by contrast, whereas.\n\nНе добавляйте объяснений причин: их нет в данных.", "crit": ["Include a clear overview, accurate key figures and relevant comparisons.", "Organise the answer into logical paragraphs and use linking words naturally.", "Use varied, accurate vocabulary for trends and comparisons.", "Use a mixture of simple and complex sentences with good grammatical control."]}];
 function drawRead(){
  var el=$("rbox");el.innerHTML="";
  READ.forEach(function(p){
@@ -276,11 +434,11 @@ function drawRead(){
    d.appendChild(w)});
   var r=document.createElement("div");r.className="mut";
   var ck=document.createElement("button");ck.className="go";ck.textContent="Проверить";
-  ck.onclick=function(){var n=0;p.qs.forEach(function(c,qi){if(picks[qi]===c.a)n++;else if(!S.mist.some(function(m){return m.q===c.q}))S.mist.push(c)});save();r.textContent="Результат: "+n+" из "+p.qs.length};
+  ck.onclick=function(){var n=0;p.qs.forEach(function(c,qi){if(picks[qi]===c.a)n++;else if(!S.mist.some(function(m){return m.q===c.q}))S.mist.push(c)});addHist("read",n,p.qs.length);r.textContent="Результат: "+n+" из "+p.qs.length};
   d.appendChild(ck);d.appendChild(r);el.appendChild(d)});
 }
 var wi=0,TI=null;
-var SN=["Task 1 · Library","Task 1 · Recycling","Task 2 · Education","Task 2 · Transport"];
+var SN=["Task 1 · Library","Task 1 · Recycling","Task 2 · Education","Task 2 · Transport","Task 2 · Languages","Task 2 · Remote work","Task 2 · Phones","Task 2 · Volunteering","Task 1 · Student time"];
 var CL=["Task Achievement / Response","Coherence and Cohesion","Lexical Resource","Grammar"];
 function drawWrite(){
  clearInterval(TI);
@@ -297,17 +455,276 @@ function drawWrite(){
  function upd(){var n=ta.value.trim()?ta.value.trim().split(/\s+/).length:0;c.textContent="Слов: "+n+" из "+w.min+". Черновик сохраняется сам.";bi.style.width=Math.min(100,Math.round(n/w.min*100))+"%"}
  ta.oninput=function(){upd();S.draft=S.draft||{};S.draft[wi]=ta.value;save()};
  upd();el.appendChild(ta);el.appendChild(bar);el.appendChild(c);
+ var an=document.createElement("button");an.className="go sec";an.textContent="🔍 Анализ текста";
+ var ar=document.createElement("div");ar.className="pbox hide";
+ an.onclick=function(){var r=essayStats(ta.value);var h="<b>Слов:</b> "+r.w+" (минимум "+w.min+") "+(r.w>=w.min?"✅":"⚠️ не хватает "+(w.min-r.w))+"<br><b>Предложений:</b> "+r.s+", средняя длина "+r.avg+" слов"+(r.avg&&r.avg<9?" ⚠️ предложения короткие, добавьте сложные":r.avg>28?" ⚠️ предложения слишком длинные":" ✅")+"<br><b>Абзацев:</b> "+r.p+(r.p<3&&w.min>=250?" ⚠️ в Task 2 обычно 4-5 абзацев":"")+"<br><b>Слова-связки:</b> "+(r.found.length?r.found.join(", "):"не найдены")+(r.found.length<3?" ⚠️ добавьте связки (However, For example, In conclusion)":" ✅")+"<br><b>Частые повторы:</b> "+(r.rep.length?r.rep.join(", ")+" ⚠️ подберите синонимы":"нет ✅")+(r.very>=3?"<br>⚠️ Слово very повторяется "+r.very+" раз, замените его более точными словами":"");ar.innerHTML=r.w?h:"Сначала напишите текст.";ar.classList.remove("hide")};
+ el.appendChild(an);el.appendChild(ar);
  var mins=w.min>=250?40:20;
  var tmr=document.createElement("button");tmr.className="go sec";tmr.textContent="⏱ Таймер "+mins+" мин";
  var tv=document.createElement("span");tv.className="mut";
  tmr.onclick=function(){clearInterval(TI);var left=mins*60;function tick(){var m=Math.floor(left/60),sc=left%60;tv.textContent=(m<10?"0":"")+m+":"+(sc<10?"0":"")+sc;if(left<=0){clearInterval(TI);tv.textContent="Время вышло"}left--}tick();TI=setInterval(tick,1000)};
  el.appendChild(tmr);el.appendChild(tv);
- var sb=document.createElement("button");sb.className="go sec";sb.textContent="Образец (band 7) и критерии";
+ var sb=document.createElement("button");sb.className="go sec";sb.textContent=w.outline?"План ответа и критерии":"Образец (band 7) и критерии";
  var sv=document.createElement("div");sv.className="hide";
  var sp=document.createElement("p");sp.style.whiteSpace="pre-wrap";sp.textContent=w.sample;sv.appendChild(sp);
  var cr=document.createElement("div");cr.innerHTML="<h3>Критерии</h3>"+w.crit.map(function(x,k){return "<p><b>"+CL[k]+":</b> "+x+"</p>"}).join("");sv.appendChild(cr);
  sb.onclick=function(){sv.classList.toggle("hide")};
  el.appendChild(sb);el.appendChild(sv);
+}
+var LST=[{"t": "Dialogue 1: Joining a library", "lines": [["A", "Good morning. How can I help you?"], ["B", "Hi, I would like to join the city library."], ["A", "Of course. Do you live in the city?"], ["B", "Yes, I moved here two months ago. I live on Park Road."], ["A", "Great. Membership is free for residents, but I need to see proof of address."], ["B", "I have my rental agreement. Is that all right?"], ["A", "That is perfect. You can borrow up to six books for three weeks."], ["B", "Can I renew them online?"], ["A", "Yes, but only once. The library is open until eight on weekdays and until five on Saturdays."], ["B", "Thank you. I will come back tomorrow, because I forgot my photo ID."]], "qs": [{"q": "How long has the visitor lived in the city?", "o": ["Two weeks", "Two months", "Two years"], "a": 1}, {"q": "Which document does the visitor show as proof of address?", "o": ["A bank letter", "A rental agreement", "A passport"], "a": 1}, {"q": "How many books can a member borrow?", "o": ["Three", "Six", "Eight"], "a": 1}, {"q": "Why will the visitor come back tomorrow?", "o": ["The library is closed", "They forgot their photo ID", "They want to renew a book"], "a": 1}]}, {"t": "Talk 2: Science club open day", "lines": [["A", "Welcome to the science club open day. The event starts at ten with a short talk in Room 12 about our new robotics project. After the talk, at eleven thirty, there will be a tour of the laboratories. Lunch is not included, but the cafe on the ground floor offers a discount for visitors. If you would like to join the club, please fill in the form at the main desk. The membership fee is twenty pounds per year. The last activity is a demonstration at two o’clock, and everyone should meet outside Building B."]], "qs": [{"q": "Where will the opening talk take place?", "o": ["Room 2", "Room 12", "Building B"], "a": 1}, {"q": "What time does the laboratory tour start?", "o": ["10:00", "11:30", "2:00"], "a": 1}, {"q": "How much is the yearly membership?", "o": ["10 pounds", "20 pounds", "30 pounds"], "a": 1}, {"q": "Where should people meet for the final demonstration?", "o": ["At the main desk", "In the cafe", "Outside Building B"], "a": 2}]}, {"t": "Dialogue 3: Booking a hotel room", "lines": [["A", "Hello, Seaside Hotel. How can I help you?"], ["B", "Hi, I would like to book a double room for three nights from the twelfth of June."], ["A", "Let me check. We have a room with a garden view for ninety pounds a night."], ["B", "Is breakfast included?"], ["A", "Breakfast costs an extra eight pounds per person, and it is served from seven to ten."], ["B", "That is fine. Could I also have a parking space?"], ["A", "Yes, parking is free for guests. May I have your name, please?"], ["B", "It is Daniel Brooks. That is B R O O K S."]], "qs": [{"q": "How many nights does the guest want to stay?", "o": ["Two", "Three", "Five"], "a": 1}, {"q": "How much is the room per night?", "o": ["80 pounds", "90 pounds", "100 pounds"], "a": 1}, {"q": "What is said about breakfast?", "o": ["It is included", "It costs extra", "It is not available"], "a": 1}, {"q": "What is said about parking?", "o": ["It is free for guests", "It costs ten pounds", "There is no parking"], "a": 0}]}, {"t": "Talk 4: City bike scheme", "lines": [["A", "Welcome to the city bike scheme. To use a bike, you first need to download the app and register with your email. The first thirty minutes of every ride are free; after that, the cost is one pound for each extra thirty minutes. Bikes can be collected from any of the fifty stations in the city centre and returned to any other station. Helmets are not provided, so please bring your own. If you have a problem, call the helpline, which is open from eight in the morning until ten at night."]], "qs": [{"q": "What must a new user do first?", "o": ["Pay a deposit", "Download the app and register", "Buy a helmet"], "a": 1}, {"q": "How long is the free part of each ride?", "o": ["15 minutes", "30 minutes", "60 minutes"], "a": 1}, {"q": "How many stations are there in the city centre?", "o": ["Twenty", "Fifty", "One hundred"], "a": 1}, {"q": "What is said about helmets?", "o": ["They are provided", "They are not provided", "They can be rented"], "a": 1}]}, {"t": "Dialogue 5: Asking for directions", "lines": [["A", "Excuse me, could you tell me how to get to the train station?"], ["B", "Of course. Go straight along this street until you reach the bank, then turn left."], ["A", "Is it far from here?"], ["B", "No, it is about ten minutes on foot. You will see a big supermarket on your right."], ["A", "Thank you. And is there a bus?"], ["B", "Yes, the number twelve stops opposite the bank every fifteen minutes."]], "qs": [{"q": "Where should the man turn left?", "o": ["At the bank", "At the supermarket", "At the post office"], "a": 0}, {"q": "How long does it take on foot?", "o": ["5 minutes", "10 minutes", "20 minutes"], "a": 1}, {"q": "What will he see on his right?", "o": ["A park", "A supermarket", "A school"], "a": 1}, {"q": "How often does bus number twelve run?", "o": ["Every 5 minutes", "Every 15 minutes", "Every 30 minutes"], "a": 1}]}, {"t": "Talk 6: Museum visit information", "lines": [["A", "Good morning and welcome to the City Museum. The museum is open every day except Monday, from nine thirty to five. Tickets cost eight pounds for adults, and children under twelve go in for free. Audio guides are available in six languages at the information desk for an extra three pounds. Photography is allowed, but please do not use a flash in the gallery of old paintings. The cafe on the second floor closes at four, so we recommend visiting it before the last tour begins."]], "qs": [{"q": "On which day is the museum closed?", "o": ["Sunday", "Monday", "Tuesday"], "a": 1}, {"q": "How much is an adult ticket?", "o": ["6 pounds", "8 pounds", "10 pounds"], "a": 1}, {"q": "In how many languages are audio guides available?", "o": ["Four", "Six", "Eight"], "a": 1}, {"q": "What time does the cafe close?", "o": ["3:00", "4:00", "5:00"], "a": 1}]}];
+function drawListen2(){
+ var el=$("lbox2");el.innerHTML="";
+ LST.forEach(function(d){
+  var c=document.createElement("div");c.className="card";
+  c.innerHTML="<h2>🎧 "+d.t+"</h2><p class='mut'>Прослушайте запись (до двух раз), затем ответьте на вопросы.</p>";
+  var plays=0,note=document.createElement("div");note.className="mut";
+  var pb=document.createElement("button");pb.className="go";pb.textContent="▶ Слушать";
+  pb.onclick=function(){
+   if(plays>=2){note.textContent="Прослушивание закончилось (максимум 2 раза).";return}
+   plays++;note.textContent="Прослушиваний: "+plays+" из 2";
+   try{speechSynthesis.cancel();d.lines.forEach(function(l){var u=new SpeechSynthesisUtterance(l[1]);u.lang="en-US";u.rate=0.9;u.pitch=l[0]==="B"?1.25:0.9;speechSynthesis.speak(u)})}
+   catch(e){note.textContent="Озвучка не поддерживается"}
+  };
+  c.appendChild(pb);c.appendChild(note);
+  var picks=[];
+  d.qs.forEach(function(q,qi){
+   var w=document.createElement("div");w.innerHTML="<p><b>"+(qi+1)+".</b> "+q.q+"</p>";
+   q.o.forEach(function(t,i){var b=document.createElement("button");b.className="opt";b.textContent=t;
+    b.onclick=function(){picks[qi]=i;w.querySelectorAll(".opt").forEach(function(x){x.classList.remove("sel")});b.classList.add("sel")};w.appendChild(b)});
+   c.appendChild(w)});
+  var r=document.createElement("div");r.className="mut";
+  var ck=document.createElement("button");ck.className="go";ck.textContent="Проверить";
+  ck.onclick=function(){var n=0;d.qs.forEach(function(q,qi){if(picks[qi]===q.a)n++;else if(!S.mist.some(function(m){return m.q===q.q}))S.mist.push(q)});addHist("listen",n,d.qs.length);r.textContent="Результат: "+n+" из "+d.qs.length};
+  var tb=document.createElement("button");tb.className="go sec";tb.textContent="Показать текст";
+  var tx=document.createElement("p");tx.className="hide";tx.style.whiteSpace="pre-wrap";
+  tx.textContent=d.lines.map(function(l){return d.lines.length>1?l[0]+": "+l[1]:l[1]}).join("\n");
+  tb.onclick=function(){tx.classList.toggle("hide")};
+  c.appendChild(ck);c.appendChild(tb);c.appendChild(r);c.appendChild(tx);
+  el.appendChild(c);
+ });
+}
+var VOC=[["analyse", "анализировать", "Scientists analyse the data."], ["approach", "подход", "We need a new approach."], ["assess", "оценивать", "Teachers assess students every term."], ["benefit", "польза, выгода", "Exercise has many benefits."], ["challenge", "вызов, трудная задача", "Learning a language is a challenge."], ["consequence", "последствие", "Pollution has serious consequences."], ["contribute", "вносить вклад", "Everyone can contribute to the project."], ["crucial", "решающий, крайне важный", "Sleep is crucial for memory."], ["demonstrate", "показывать, доказывать", "The results demonstrate a clear trend."], ["distribute", "распределять", "Food is distributed to families."], ["efficient", "эффективный", "Trains are an efficient way to travel."], ["emphasise", "подчёркивать", "The teacher emphasised the deadline."], ["environment", "окружающая среда", "We must protect the environment."], ["evidence", "доказательство", "There is no evidence for this idea."], ["factor", "фактор", "Price is an important factor."], ["generate", "создавать, производить", "Wind turbines generate electricity."], ["impact", "влияние", "Technology has a big impact on schools."], ["indicate", "указывать на", "The graph indicates a rise in sales."], ["issue", "проблема, вопрос", "Housing is a major issue."], ["maintain", "поддерживать", "It is hard to maintain a healthy diet."], ["obtain", "получать", "You can obtain a visa online."], ["policy", "политика, курс", "The government changed its policy."], ["potential", "потенциал; возможный", "The idea has great potential."], ["previous", "предыдущий", "In the previous lesson we studied verbs."], ["reduce", "сокращать", "We should reduce plastic waste."], ["reliable", "надёжный", "This is a reliable source of information."], ["require", "требовать", "The job requires experience."], ["resource", "ресурс", "Water is a valuable resource."], ["significant", "значительный", "There was a significant increase."], ["sustainable", "устойчивый", "Sustainable energy is the future."], ["tend to", "иметь склонность", "People tend to work harder in groups."], ["urban", "городской", "Urban life can be stressful."], ["vary", "различаться", "Prices vary from shop to shop."], ["wealth", "богатство", "Wealth is not equally shared."], ["adapt", "приспосабливаться", "Animals adapt to new conditions."], ["affect", "влиять", "Weather affects our mood."], ["available", "доступный", "The report is available online."], ["concern", "беспокойство", "There is growing concern about noise."], ["decline", "снижение; снижаться", "Sales declined last year."], ["rapid", "быстрый", "The city has seen rapid growth."], ["abundant", "обильный", "Fresh water is abundant here."], ["accurate", "точный", "The report is accurate."], ["acquire", "приобретать", "Children acquire language quickly."], ["advocate", "выступать за", "Many experts advocate recycling."], ["aspect", "аспект", "Consider every aspect of the problem."], ["attitude", "отношение", "A positive attitude helps."], ["campaign", "кампания", "The campaign raised money."], ["capacity", "вместимость; способность", "The hall has a capacity of 500."], ["category", "категория", "Sort the items by category."], ["community", "сообщество", "The community supports local shops."], ["compare", "сравнивать", "Compare the two graphs."], ["complex", "сложный", "This is a complex issue."], ["constant", "постоянный", "The temperature remained constant."], ["consume", "потреблять", "Cars consume a lot of fuel."], ["context", "контекст", "Look at the word in context."], ["contrast", "контраст", "There is a sharp contrast between them."], ["culture", "культура", "Language is part of culture."], ["data", "данные", "We collected data from schools."], ["define", "определять", "Define the term clearly."], ["derive", "получать, происходить", "The word is derived from Latin."], ["domestic", "домашний; внутренний", "Domestic flights are cheaper."], ["economy", "экономика", "The economy grew last year."], ["enable", "позволять", "Apps enable people to study anywhere."], ["enhance", "улучшать", "Music can enhance learning."], ["ensure", "обеспечивать", "Ensure that the data is correct."], ["estimate", "оценивать", "Experts estimate a five percent rise."], ["expand", "расширяться", "The company plans to expand."], ["flexible", "гибкий", "Flexible hours suit students."], ["focus", "сосредотачиваться", "Focus on one task at a time."], ["globalisation", "глобализация", "Globalisation connects markets."]];
+var vi=0,vflip=false;
+function drawVocab(){
+ var el=$("vbox");S.vocab=S.vocab||{known:[]};
+ var known=S.vocab.known,left=[];
+ VOC.forEach(function(w,i){if(known.indexOf(i)<0)left.push(i)});
+ el.innerHTML="<h2>📚 Слова для IELTS</h2><p class='mut'>Выучено: "+known.length+" из "+VOC.length+"</p><div class='bar'><i style='width:"+Math.round(known.length/VOC.length*100)+"%'></i></div>";
+ if(!left.length){
+  var dn=document.createElement("p");dn.textContent="Все слова выучены! 🎉";el.appendChild(dn);
+  var rb=document.createElement("button");rb.className="go";rb.textContent="Начать заново";
+  rb.onclick=function(){S.vocab.known=[];vi=0;save();drawVocab()};el.appendChild(rb);return;
+ }
+ var i=left[vi%left.length],w=VOC[i];
+ var c=document.createElement("div");c.className="fcard";
+ function face(){c.innerHTML=vflip?"<span>"+w[1]+"</span><small>"+w[2]+"</small>":"<span>"+w[0]+"</span><small>нажмите, чтобы увидеть перевод</small>"}
+ face();c.onclick=function(){vflip=!vflip;face()};
+ el.appendChild(c);
+ var sp=document.createElement("button");sp.className="go sec";sp.textContent="🔊 Произношение";
+ sp.onclick=function(){try{speechSynthesis.cancel();var u=new SpeechSynthesisUtterance(w[0]);u.lang="en-US";u.rate=0.85;speechSynthesis.speak(u)}catch(e){}};
+ var ok=document.createElement("button");ok.className="go";ok.textContent="Знаю ✓";
+ ok.onclick=function(){known.push(i);save();vflip=false;drawVocab()};
+ var no=document.createElement("button");no.className="go sec";no.textContent="Повторить ↻";
+ no.onclick=function(){vi++;vflip=false;drawVocab()};
+ el.appendChild(ok);el.appendChild(no);el.appendChild(sp);
+}
+
+function dkey(d){return d.getFullYear()+"-"+("0"+(d.getMonth()+1)).slice(-2)+"-"+("0"+d.getDate()).slice(-2)}
+function touchStreak(){
+ var t=dkey(new Date()),y=new Date();y.setDate(y.getDate()-1);var yk=dkey(y);
+ S.st=S.st||{last:"",count:0,best:0,days:{}};S.st.days=S.st.days||{};
+ S.st.days[t]=(S.st.days[t]||0)+1;
+ if(S.st.last!==t){S.st.count=(S.st.last===yk)?(S.st.count||0)+1:1;S.st.last=t;S.st.best=Math.max(S.st.best||0,S.st.count)}
+}
+
+var BR={L:[[39,9],[37,8.5],[35,8],[32,7.5],[30,7],[26,6.5],[23,6],[18,5.5],[16,5],[13,4.5],[10,4],[8,3.5],[6,3],[4,2.5],[0,2]],
+R:[[39,9],[37,8.5],[35,8],[33,7.5],[30,7],[27,6.5],[23,6],[19,5.5],[15,5],[13,4.5],[10,4],[8,3.5],[6,3],[4,2.5],[0,2]]};
+function band(t,n){var a=BR[t];for(var i=0;i<a.length;i++){if(n>=a[i][0])return a[i][1]}return 0}
+function rb(x){return Math.round(x*2)/2}
+function drawCalc(){
+ var el=$("cbox");
+ el.innerHTML="<h2>🎯 Калькулятор балла IELTS</h2><p class='mut'>Введите результаты. Таблица примерная, на экзамене она может немного отличаться.</p>"
+ +"<div class='field'><label>Listening: правильных ответов (0-40)</label><input id='cl' type='number' inputmode='numeric' min='0' max='40'></div>"
+ +"<div class='field'><label>Reading: правильных ответов (0-40)</label><input id='cr' type='number' inputmode='numeric' min='0' max='40'></div>"
+ +"<div class='field'><label>Writing: балл (0-9, можно 6.5)</label><input id='cw' type='number' inputmode='decimal' step='0.5' min='0' max='9'></div>"
+ +"<div class='field'><label>Speaking: балл (0-9, можно 6.5)</label><input id='cs' type='number' inputmode='decimal' step='0.5' min='0' max='9'></div>"
+ +"<button class='go' id='cgo'>Рассчитать</button><div id='cres'></div>";
+ $("cgo").onclick=function(){
+  var l=parseFloat($("cl").value),r=parseFloat($("cr").value),w=parseFloat($("cw").value),sp=parseFloat($("cs").value);
+  function ok(v,m){return !isNaN(v)&&v>=0&&v<=m}
+  if(!ok(l,40)||!ok(r,40)||!ok(w,9)||!ok(sp,9)){$("cres").textContent="Проверьте числа: Listening и Reading от 0 до 40, Writing и Speaking от 0 до 9.";return}
+  var bl=band("L",l),br=band("R",r),ov=rb((bl+br+w+sp)/4);
+  $("cres").innerHTML="<p>Listening: <b>"+bl+"</b><br>Reading: <b>"+br+"</b><br>Writing: <b>"+w+"</b><br>Speaking: <b>"+sp+"</b></p><h2>Общий балл: "+ov.toFixed(1)+"</h2>";
+ };
+}
+
+var SP={"p1": ["What do you do: do you work or are you a student?", "Where is your hometown, and what do you like about it?", "Do you prefer to spend your free time indoors or outdoors? Why?", "How often do you use public transport?", "What kind of food do you enjoy cooking or eating?", "Do you like reading? What do you usually read?", "How do you usually spend your weekends?", "Do you enjoy listening to music? What kind?", "What was your favourite subject at school?", "Do you think it is important to learn English? Why?", "How do you keep in touch with your friends?", "What is the weather like in your city, and what do you do in different seasons?", "What do you like most about your job or studies?", "Do you live in a house or a flat? What do you like about it?", "How do you usually travel to work or school?", "Do you enjoy cooking? Why or why not?", "What do you usually do in the evenings?", "Is there a place near your home where you like to relax?", "Do you like shopping? Why?", "How often do you use the internet, and what for?", "What kind of clothes do you like wearing?", "Do you prefer to study in the morning or in the evening?", "Have you ever learned to play a musical instrument?", "What sports are popular in your country?", "Do you like to take photographs? Why?", "How important are holidays to you?", "Do you often visit your relatives?", "What is your favourite season, and why?", "Do you prefer to read paper books or books on a screen?", "What do you do to stay healthy?"], "p2": [{"t": "Describe a book you enjoyed reading.", "pts": ["what it was", "when you read it", "why you liked it", "and whether you would recommend it"]}, {"t": "Describe a place you would like to visit.", "pts": ["where it is", "how you learned about it", "what you would do there", "and why you want to go"]}, {"t": "Describe a person who helped you.", "pts": ["who the person is", "how you know them", "how they helped you", "and how you felt about it"]}, {"t": "Describe a useful skill you have learned.", "pts": ["what the skill is", "how you learned it", "how long it took", "and why it is useful"]}, {"t": "Describe a memorable meal.", "pts": ["where you had it", "who you were with", "what you ate", "and why it was memorable"]}, {"t": "Describe a time when you were very busy.", "pts": ["when it was", "what you had to do", "how you managed your time", "and how you felt afterwards"]}, {"t": "Describe a teacher who influenced you.", "pts": ["who the teacher was", "what subject they taught", "what they were like", "and why they influenced you"]}, {"t": "Describe a piece of technology you use often.", "pts": ["what it is", "how long you have had it", "what you use it for", "and why it is important to you"]}, {"t": "Describe a city you have visited.", "pts": ["where it is", "when you went there", "what you did there", "and what you liked or disliked about it"]}, {"t": "Describe an event you are looking forward to.", "pts": ["what the event is", "when it will happen", "who will be there", "and why you are looking forward to it"]}, {"t": "Describe a hobby you enjoy.", "pts": ["what the hobby is", "when you started it", "how often you do it", "and why you enjoy it"]}, {"t": "Describe a time you helped someone.", "pts": ["who you helped", "what the problem was", "how you helped", "and how you felt afterwards"]}], "p3": ["Why do some people prefer to learn alone rather than in a group?", "How has technology changed the way people read?", "Do you think tourism brings more benefits or more problems to a place?", "What qualities make someone a good teacher?", "Is it better to have a few close friends or many acquaintances?", "How can cities encourage people to use public transport?", "Do young people today have more opportunities than previous generations?", "Why is time management important for students?", "Why do people enjoy travelling to other countries?", "How do you think education will change in the next twenty years?", "What are the advantages and disadvantages of living in a big city?", "Should children be given homework? Why or why not?", "How does social media affect the way people communicate?", "Why do some people prefer to work for themselves?", "What can governments do to encourage a healthy lifestyle?", "Do you think people read less now than in the past?", "How important is it to learn about other cultures?", "What are the benefits of team sports for young people?", "Why do some people find it hard to save money?", "How can technology help people learn languages?"]};
+
+function spExtra(){
+ var d=document.createElement("div");
+ d.innerHTML="<h3>Что оценивает экзаменатор</h3><p><b>Fluency and Coherence:</b> говорите плавно, без длинных пауз, связывайте мысли.<br><b>Lexical Resource:</b> разные слова и выражения, а не одни и те же.<br><b>Grammatical Range:</b> простые и сложные предложения без грубых ошибок.<br><b>Pronunciation:</b> понятная речь, ударения, интонация.</p>"
+ +"<h3>Полезные фразы</h3><p><b>Мнение:</b> In my opinion…; I tend to think that…; As far as I am concerned…<br><b>Пример:</b> For instance…; A good example is…; Such as…<br><b>Время подумать:</b> That is an interesting question; Let me think for a moment; Well, I would say…<br><b>Контраст:</b> On the other hand…; However…; Although…<br><b>Причина:</b> The main reason is that…; This is because…</p>"
+ +"<h3>Самопроверка после записи</h3>";
+ ["Я отвечал полными предложениями","Я назвал причину","Я привёл пример","Я не молчал дольше трёх секунд","Я использовал слова-связки"].forEach(function(t){var l=document.createElement("label");l.style.display="block";l.style.margin="6px 0";var c=document.createElement("input");c.type="checkbox";c.style.marginRight="8px";l.appendChild(c);l.appendChild(document.createTextNode(t));d.appendChild(l)});
+ return d;
+}
+var spPart="p1",spI=0,srec=null,schunks=[],STI=null;
+function drawSpeak(){
+ clearInterval(STI);
+ var el=$("sbox");el.innerHTML="<h2>🎙 Speaking</h2>";
+ var row=document.createElement("div");row.className="row";
+ [["p1","Part 1"],["p2","Part 2"],["p3","Part 3"]].forEach(function(p){var b=document.createElement("button");b.className="chip"+(spPart===p[0]?" on":"");b.textContent=p[1];b.onclick=function(){spPart=p[0];spI=0;drawSpeak()};row.appendChild(b)});
+ el.appendChild(row);
+ var items=SP[spPart],it=items[spI%items.length];
+ var box=document.createElement("div");box.className="pbox";
+ if(spPart==="p2"){box.innerHTML="<b></b><p>You should say:</p><ul></ul>";box.querySelector("b").textContent=it.t;it.pts.forEach(function(x){var li2=document.createElement("li");li2.textContent=x;box.querySelector("ul").appendChild(li2)})}
+ else box.textContent=it;
+ el.appendChild(box);
+ var hint=document.createElement("p");hint.className="mut";
+ hint.textContent=spPart==="p1"?"Part 1: отвечайте 2-3 предложениями, добавьте причину.":spPart==="p2"?"Part 2: 1 минута на подготовку, затем говорите до 2 минут.":"Part 3: давайте развёрнутый ответ с причиной и примером.";
+ el.appendChild(hint);
+ var tv=document.createElement("span");tv.className="mut";tv.style.marginLeft="6px";
+ function runT(secs,after){clearInterval(STI);var left=secs;function tick(){var m=Math.floor(left/60),s2=left%60;tv.textContent=(m<10?"0":"")+m+":"+(s2<10?"0":"")+s2;if(left<=0){clearInterval(STI);if(after)after();else tv.textContent="Время вышло"}left--}tick();STI=setInterval(tick,1000)}
+ var nx=document.createElement("button");nx.className="go sec";nx.textContent="🎲 Другой вопрос";nx.onclick=function(){var n=items.length,r=Math.floor(Math.random()*n);if(r===spI%n)r=(r+1)%n;spI=r;drawSpeak()};
+ var tb=document.createElement("button");tb.className="go sec";
+ if(spPart==="p2"){tb.textContent="⏱ Подготовка 1 мин";tb.onclick=function(){runT(60,function(){tv.textContent="Говорите! 02:00";setTimeout(function(){runT(120)},800)})}}
+ else{tb.textContent="⏱ Таймер 1 мин";tb.onclick=function(){runT(60)}}
+ var rec=document.createElement("button");rec.className="go";rec.textContent="🔴 Записать ответ";
+ var au=document.createElement("audio");au.controls=true;au.className="hide";au.style.width="100%";au.style.marginTop="10px";
+ var msg=document.createElement("p");msg.className="mut";
+ rec.onclick=function(){
+  if(srec&&srec.state==="recording"){srec.stop();return}
+  if(!navigator.mediaDevices||!window.MediaRecorder){msg.textContent="Запись не поддерживается в этом браузере.";return}
+  navigator.mediaDevices.getUserMedia({audio:true}).then(function(stream){
+   schunks=[];srec=new MediaRecorder(stream);
+   srec.ondataavailable=function(e){if(e.data&&e.data.size)schunks.push(e.data)};
+   srec.onstop=function(){stream.getTracks().forEach(function(t){t.stop()});var b=new Blob(schunks,{type:srec.mimeType||"audio/mp4"});au.src=URL.createObjectURL(b);au.classList.remove("hide");rec.textContent="🔴 Записать ещё раз";msg.textContent="Прослушайте себя. Запись остаётся только на вашем телефоне.";S.sp=(S.sp||0)+1;save()};
+   srec.start();rec.textContent="⏹ Остановить запись";msg.textContent="Идёт запись...";
+  }).catch(function(){msg.textContent="Нет доступа к микрофону. Разрешите его в настройках браузера."});
+ };
+ el.appendChild(rec);el.appendChild(tb);el.appendChild(tv);el.appendChild(nx);el.appendChild(au);el.appendChild(msg);el.appendChild(spExtra());
+}
+
+function addHist(t,n,m,l){S.hist=S.hist||[];S.hist.push({t:t,n:n,m:m,l:l||"",d:dkey(new Date())});if(S.hist.length>300)S.hist=S.hist.slice(-300);save()}
+function pct(type){var a=(S.hist||[]).filter(function(h){return h.t===type});if(!a.length)return null;return Math.round(a.reduce(function(s,h){return s+h.n/h.m},0)/a.length*100)}
+function draftWords(){var n=0,d=S.draft||{};for(var k in d){var t=(d[k]||"").trim();if(t)n+=t.split(/\s+/).length}return n}
+function skills(){
+ var known=S.vocab&&S.vocab.known?S.vocab.known.length:0;
+ return [["Grammar",pct("test")||0],["Reading",pct("read")||0],["Listening",pct("listen")||0],["Writing",Math.min(100,Math.round(draftWords()/10))],["Speaking",Math.min(100,(S.sp||0)*10)],["Vocab",Math.round(known/VOC.length*100)]];
+}
+function radar(sk){
+ var cx=130,cy=120,R=80,n=sk.length;
+ function pt(i,r){var a=-Math.PI/2+i*2*Math.PI/n;return [cx+r*Math.cos(a),cy+r*Math.sin(a)]}
+ var g="";
+ [0.33,0.66,1].forEach(function(f){g+="<polygon points='"+sk.map(function(_,i){return pt(i,R*f).join(",")}).join(" ")+"' fill='none' stroke='var(--bd)'/>"});
+ sk.forEach(function(_,i){var p=pt(i,R);g+="<line x1='"+cx+"' y1='"+cy+"' x2='"+p[0]+"' y2='"+p[1]+"' stroke='var(--bd)'/>"});
+ g+="<polygon points='"+sk.map(function(x,i){return pt(i,R*Math.max(x[1],4)/100).join(",")}).join(" ")+"' fill='var(--ac)' fill-opacity='.25' stroke='var(--ac)' stroke-width='2'/>";
+ sk.forEach(function(x,i){var p=pt(i,R+17);g+="<text x='"+p[0]+"' y='"+p[1]+"' font-size='11' text-anchor='middle' dominant-baseline='middle' fill='var(--mut)'>"+x[0]+"</text>"});
+ return "<svg viewBox='0 0 260 240' style='width:100%;max-width:300px;display:block;margin:auto'>"+g+"</svg>";
+}
+function lineChart(){
+ var H=(S.hist||[]).slice(-20);
+ if(H.length<2)return "<p class='mut'>Пройдите хотя бы два задания, и здесь появится график.</p>";
+ var W=300,Hh=140,p=24;
+ var pts=H.map(function(h,i){return [p+i*(W-2*p)/(H.length-1),Hh-p-(h.n/h.m)*(Hh-2*p)]});
+ var gy=Hh-p-0.8*(Hh-2*p);
+ var g="<line x1='"+p+"' y1='"+gy+"' x2='"+(W-p)+"' y2='"+gy+"' stroke='var(--ok)' stroke-dasharray='4 3'/><text x='"+(W-p)+"' y='"+(gy-4)+"' font-size='10' text-anchor='end' fill='var(--ok)'>цель 80%</text>";
+ g+="<polyline fill='none' stroke='var(--ac)' stroke-width='2.5' points='"+pts.map(function(q){return q.join(",")}).join(" ")+"'/>";
+ pts.forEach(function(q){g+="<circle cx='"+q[0]+"' cy='"+q[1]+"' r='3.5' fill='var(--ac)'/>"});
+ return "<svg viewBox='0 0 300 140' style='width:100%'>"+g+"</svg>";
+}
+var ADV={Grammar:["test","Пройдите тест своего уровня и разберите ошибки."],Reading:["read","Прочитайте один текст и проверьте ответы."],Listening:["listen","Сделайте одно задание Listening, затем сверьте с текстом."],Writing:["write","Напишите черновик Task 2 по плану и сделайте анализ текста."],Speaking:["speak","Запишите ответ на вопрос Part 2 и прослушайте себя."],Vocab:["vocab","Выучите 10 слов сегодня."]};
+function coachHtml(sk){
+ var s2=sk.slice().sort(function(a,b){return a[1]-b[1]}),w=s2[0];
+ var h="<p>Слабое место сейчас: <b>"+w[0]+"</b> ("+w[1]+"%). План на сегодня:</p><ol>";
+ s2.slice(0,3).forEach(function(x){h+="<li><b>"+x[0]+":</b> "+ADV[x[0]][1]+"</li>"});
+ return h+"</ol><button class='go' data-go='"+ADV[w[0]][0]+"'>Начать с "+w[0]+"</button>";
+}
+function badgesHtml(){
+ var H=S.hist||[],st=S.st||{},known=S.vocab&&S.vocab.known?S.vocab.known.length:0;
+ var B=[["🚀","Первый шаг",H.length>=1],["🔥","Серия 3 дня",(st.best||0)>=3],["🏆","Серия 7 дней",(st.best||0)>=7],["📚","10 слов",known>=10],["🧠","Все слова",known>=VOC.length],["💯","Без ошибок",H.some(function(h){return h.n===h.m})],["🎙","Спикер",(S.sp||0)>=3],["✍️","500 слов",draftWords()>=500],["🏁","Симуляция",H.some(function(h){return h.t==="sim"})]];
+ return "<div class='badges'>"+B.map(function(b){return "<span class='bdg"+(b[2]?"":" off")+"'>"+b[0]+" "+b[1]+"</span>"}).join("")+"</div>";
+}
+function dayNum(){return Math.floor(Date.now()/86400000)}
+var PM={left:1500,run:null};
+function pmShow(){var e=$("pmv");if(e){var m=Math.floor(PM.left/60),s2=PM.left%60;e.textContent=(m<10?"0":"")+m+":"+(s2<10?"0":"")+s2}}
+function pmToggle(){if(PM.run){clearInterval(PM.run);PM.run=null}else{PM.run=setInterval(function(){PM.left--;pmShow();if(PM.left<=0){clearInterval(PM.run);PM.run=null;PM.left=1500;var e=$("pmv");if(e)e.textContent="Перерыв 5 минут ☕"}},1000)}}
+function pmReset(){clearInterval(PM.run);PM.run=null;PM.left=1500;pmShow()}
+function bandOf(t,p){return p===null?"—":"≈ "+band(t,Math.round(p/100*40))}
+var HERO_SVG="<svg viewBox=\"0 0 360 220\" xmlns=\"http://www.w3.org/2000/svg\" role=\"img\" aria-label=\"EnglishLab\"><defs><linearGradient id=\"dk\" x1=\"0\" y1=\"0\" x2=\"0\" y2=\"1\"><stop offset=\"0\" stop-color=\"#a47a52\"/><stop offset=\"1\" stop-color=\"#6b4a2f\"/></linearGradient></defs><rect x=\"170\" y=\"0\" width=\"190\" height=\"110\" fill=\"#fff\" opacity=\".07\"/><rect x=\"0\" y=\"178\" width=\"360\" height=\"42\" fill=\"url(#dk)\"/><rect x=\"66\" y=\"154\" width=\"108\" height=\"24\" rx=\"2\" fill=\"#0f766e\"/><text x=\"76\" y=\"170\" font-size=\"11\" fill=\"#fff\" font-family=\"Arial\">Listening</text><rect x=\"72\" y=\"132\" width=\"98\" height=\"22\" rx=\"2\" fill=\"#6d28d9\"/><text x=\"82\" y=\"147\" font-size=\"11\" fill=\"#fff\" font-family=\"Arial\">Writing</text><rect x=\"68\" y=\"110\" width=\"102\" height=\"22\" rx=\"2\" fill=\"#2563eb\"/><text x=\"78\" y=\"125\" font-size=\"11\" fill=\"#fff\" font-family=\"Arial\">Reading</text><rect x=\"190\" y=\"80\" width=\"124\" height=\"86\" rx=\"5\" fill=\"#0b1b4a\" stroke=\"#cbd5e1\" stroke-width=\"3\"/><text x=\"204\" y=\"108\" font-size=\"12\" font-style=\"italic\" fill=\"#fff\" font-family=\"Georgia,serif\">Better English</text><text x=\"204\" y=\"126\" font-size=\"12\" font-style=\"italic\" fill=\"#fff\" font-family=\"Georgia,serif\">Brighter Future</text><path d=\"M282 154v-14M286 154v-18M290 154v-14\" stroke=\"#93a5d9\" stroke-width=\"1.5\" fill=\"none\"/><path d=\"M178 166h148l8 12H170z\" fill=\"#cbd5e1\"/><rect x=\"18\" y=\"146\" width=\"38\" height=\"32\" rx=\"6\" fill=\"#fff\"/><path d=\"M56 154h6a7 7 0 0 1 0 14h-6\" fill=\"none\" stroke=\"#fff\" stroke-width=\"3\"/><text x=\"23\" y=\"161\" font-size=\"6\" fill=\"#334\" font-family=\"Georgia,serif\" font-style=\"italic\">Small steps</text><text x=\"25\" y=\"170\" font-size=\"6\" fill=\"#334\" font-family=\"Georgia,serif\" font-style=\"italic\">Big goals</text><rect x=\"328\" y=\"146\" width=\"22\" height=\"32\" rx=\"4\" fill=\"#cfe3ff\" opacity=\".45\"/><path d=\"M334 146V120M339 146V104M345 146V124\" stroke=\"#4d8a5a\" stroke-width=\"2\"/><g fill=\"#fff\"><circle cx=\"334\" cy=\"116\" r=\"6\"/><circle cx=\"339\" cy=\"98\" r=\"7\"/><circle cx=\"345\" cy=\"119\" r=\"6\"/></g><g fill=\"#fbbf24\"><circle cx=\"334\" cy=\"116\" r=\"2.5\"/><circle cx=\"339\" cy=\"98\" r=\"3\"/><circle cx=\"345\" cy=\"119\" r=\"2.5\"/></g></svg>";
+var MOUNT_SVG="<svg viewBox=\"0 0 360 160\" preserveAspectRatio=\"xMidYMid slice\" xmlns=\"http://www.w3.org/2000/svg\" role=\"img\" aria-label=\"EnglishLab\"><defs><linearGradient id=\"sk\" x1=\"0\" y1=\"0\" x2=\"0\" y2=\"1\"><stop offset=\"0\" stop-color=\"#0b1230\"/><stop offset=\".6\" stop-color=\"#3b3f8f\"/><stop offset=\"1\" stop-color=\"#f59e0b\"/></linearGradient></defs><rect width=\"360\" height=\"160\" fill=\"url(#sk)\"/><circle cx=\"250\" cy=\"100\" r=\"34\" fill=\"#fbbf24\" opacity=\".45\"/><polygon points=\"0,130 70,72 130,112 200,52 270,112 360,84 360,160 0,160\" fill=\"#33407a\"/><polygon points=\"0,160 0,138 60,120 120,142 200,128 280,144 360,130 360,160\" fill=\"#141c3d\"/><path d=\"M300 152V128\" stroke=\"#3f9d5f\" stroke-width=\"2\"/><g transform=\"translate(300 118)\"><g fill=\"#4c6ef5\"><ellipse rx=\"3\" ry=\"9\" cy=\"-9\" transform=\"rotate(0)\"/><ellipse rx=\"3\" ry=\"9\" cy=\"-9\" transform=\"rotate(36)\"/><ellipse rx=\"3\" ry=\"9\" cy=\"-9\" transform=\"rotate(72)\"/><ellipse rx=\"3\" ry=\"9\" cy=\"-9\" transform=\"rotate(108)\"/><ellipse rx=\"3\" ry=\"9\" cy=\"-9\" transform=\"rotate(144)\"/><ellipse rx=\"3\" ry=\"9\" cy=\"-9\" transform=\"rotate(180)\"/><ellipse rx=\"3\" ry=\"9\" cy=\"-9\" transform=\"rotate(216)\"/><ellipse rx=\"3\" ry=\"9\" cy=\"-9\" transform=\"rotate(252)\"/><ellipse rx=\"3\" ry=\"9\" cy=\"-9\" transform=\"rotate(288)\"/><ellipse rx=\"3\" ry=\"9\" cy=\"-9\" transform=\"rotate(324)\"/></g><circle r=\"4\" fill=\"#2b2f77\"/></g></svg>";
+function drawHome(){
+ var el=$("home");if(!el)return;
+ var st=S.st||{count:0,best:0,days:{},last:""},H=S.hist||[];
+ var t=dkey(new Date()),y=new Date();y.setDate(y.getDate()-1);var yk=dkey(y);
+ var cnt=(st.last===t||st.last===yk)?(st.count||0):0;
+ var known=(S.vocab&&S.vocab.known?S.vocab.known.length:0);
+ var all=H.length?Math.round(H.reduce(function(a,h){return a+h.n/h.m},0)/H.length*100)+"%":"—";
+ var sims=H.filter(function(h){return h.t==="sim"}).length;
+ var cards=[["Серия",cnt+" 🔥"],["Средний результат",all],["Listening",bandOf("L",pct("listen"))],["Reading",bandOf("R",pct("read"))],["Слова",known+"/"+VOC.length],["Симуляции",sims]];
+ var sk=skills();
+ var wd=VOC[dayNum()%VOC.length];
+ var flat=[];LV.forEach(function(l){Q[l].forEach(function(q){flat.push(q)})});
+ var dq=flat[dayNum()%flat.length];
+ var h="<div class='hero'><div class='ht'><h2>Твой успех в английском <span>начинается здесь</span></h2><p>Практика в формате экзамена: тесты, Reading, Listening, Writing и Speaking.</p><div class='chips'><span>📖 Reading</span><span>✍️ Writing</span><span>🎧 Listening</span></div><button class='go' data-go='test'>Начать →</button></div>"+HERO_SVG+"</div>";
+ h+="<div class='sgrid'>"+cards.map(function(c){return "<div class='sc'><small>"+c[0]+"</small><b>"+c[1]+"</b></div>"}).join("")+"</div>";
+ h+="<div class='card coach'><small class='mut'>ТРЕНЕР</small><h2>Персональный план</h2>"+coachHtml(sk)+"</div>";
+ h+="<div class='two'><div class='card'><small class='mut'>КАРТА НАВЫКОВ</small><h2>Ваши навыки</h2>"+radar(sk)+"</div><div class='card'><small class='mut'>ДИНАМИКА</small><h2>Результаты заданий</h2>"+lineChart()+"</div></div>";
+ h+="<div class='two'><div class='card'><small class='mut'>ВЫЗОВ ДНЯ</small><h2>"+wd[0]+" — "+wd[1]+"</h2><p class='mut'>"+wd[2]+"</p><p><b>"+dq.q+"</b></p><div id='dq'></div><p id='dqr' class='mut'></p></div><div class='card'><small class='mut'>ФОКУС</small><h2>Таймер 25 минут</h2><p class='mut'>Занимайтесь без отвлечений, затем отдыхайте 5 минут.</p><h2 id='pmv'>25:00</h2><button class='go' id='pmgo'>Старт / пауза</button><button class='go sec' id='pmrs'>Сброс</button></div></div>";
+ h+="<div class='card'><small class='mut'>ДОСТИЖЕНИЯ</small><h2>Ваши награды</h2>"+badgesHtml()+"</div>";
+ h+="<h2 class='stt'>Выберите раздел</h2><div class='choose'>"
+ +[["read","📖","Reading","Понять и ответить","#e8efff"],["write","✍️","Writing","План и анализ","#f0e9ff"],["listen","🎧","Listening","Слушать и отвечать","#dcf7ee"],["speak","🎙","Speaking","Говорить и записать","#fff0dc"],["sim","🏁","Симуляция","Как на экзамене","#ffe9e1"]].map(function(c){return "<button class='chc' data-go='"+c[0]+"' style='background:"+c[4]+"'>"+c[1]+" "+c[2]+"<small>"+c[3]+"</small></button>"}).join("")+"</div>";
+ h+="<div class='mount'>"+MOUNT_SVG+"<div class='mt'><h2>Не просто тест, <span>а твоё будущее.</span></h2><p>Учись сегодня. Создавай завтра.</p><button class='go' data-go='sim'>Пройти симуляцию</button></div></div>";
+ el.innerHTML=h;
+ el.querySelectorAll("[data-go]").forEach(function(b){b.onclick=function(){show(b.dataset.go)}});
+ var dqb=$("dq");
+ dq.o.forEach(function(o,i){var b=document.createElement("button");b.className="opt";b.textContent=o;b.onclick=function(){dqb.querySelectorAll(".opt").forEach(function(x){x.onclick=null});dqb.children[dq.a].classList.add("ok");if(i===dq.a){$("dqr").textContent="Верно! 🎉"}else{b.classList.add("bad");$("dqr").textContent="Неверно, правильный ответ выделен."}};dqb.appendChild(b)});
+ $("pmgo").onclick=pmToggle;$("pmrs").onclick=pmReset;pmShow();
+}
+
+var SIMI=null;
+function drawSim(){
+ clearInterval(SIMI);
+ var el=$("simbox");
+ el.innerHTML="<h2>🏁 Симуляция экзамена</h2><p class='mut'>20 вопросов из разных разделов за 15 минут. Результат попадёт в вашу статистику.</p>";
+ var b=document.createElement("button");b.className="go";b.textContent="Начать симуляцию";b.onclick=startSim;el.appendChild(b);
+}
+function startSim(){
+ var pool=[];LV.forEach(function(l){Q[l].forEach(function(x){pool.push(x)})});
+ READ.forEach(function(p){p.qs.forEach(function(x){pool.push(x)})});
+ pool=shuffle(pool).slice(0,20);
+ var el=$("simbox"),picks=[],left=900,done=false;
+ el.innerHTML="<h2>🏁 Симуляция</h2><p>Осталось: <b id='simt'>15:00</b></p>";
+ pool.forEach(function(c,qi){
+  var w=document.createElement("div");w.innerHTML="<p><b>"+(qi+1)+".</b> "+c.q+"</p>";
+  c.o.forEach(function(tx,i){var b=document.createElement("button");b.className="opt";b.textContent=tx;b.onclick=function(){if(done)return;picks[qi]=i;w.querySelectorAll(".opt").forEach(function(x){x.classList.remove("sel")});b.classList.add("sel")};w.appendChild(b)});
+  el.appendChild(w);
+ });
+ var fin=document.createElement("button");fin.className="go";fin.textContent="Завершить";el.appendChild(fin);
+ var res=document.createElement("div");el.appendChild(res);
+ function finish(){
+  if(done)return;done=true;clearInterval(SIMI);
+  var n=0;pool.forEach(function(c,qi){if(picks[qi]===c.a)n++;else if(!S.mist.some(function(m){return m.q===c.q}))S.mist.push(c)});
+  addHist("sim",n,20);
+  res.innerHTML="<h2>Результат: "+n+" из 20</h2><p>"+(n>=17?"Отлично! Вы готовы к сложным заданиям.":n>=12?"Хорошо. Разберите ошибки на вкладке «Ошибки».":"Нужно подтянуть основы. Начните с тестов своего уровня и слов.")+"</p>";
+  fin.classList.add("hide");
+ }
+ fin.onclick=finish;
+ function tick(){var m=Math.floor(left/60),s2=left%60;var e=$("simt");if(e)e.textContent=(m<10?"0":"")+m+":"+(s2<10?"0":"")+s2;if(left<=0){finish();return}left--}
+ tick();SIMI=setInterval(tick,1000);
+}
+
+function essayStats(t){
+ var words=t.trim()?t.trim().split(/\s+/):[];
+ var sents=t.split(/[.!?]+/).filter(function(x){return x.trim()}).length;
+ var paras=t.split(/\n\s*\n/).filter(function(x){return x.trim()}).length;
+ var low=t.toLowerCase();
+ var links=["however","moreover","furthermore","in addition","for example","for instance","in conclusion","on the other hand","therefore","as a result","although","whereas","while","firstly","secondly","finally","overall","in contrast","nevertheless"];
+ var found=links.filter(function(l){return low.indexOf(l)>=0});
+ var cnt={},stop=["the","and","that","this","for","with","are","was","were","have","has","not","can","will","they","their","more","than","from","people","which","also","there","these","those","been","would","could"];
+ words.forEach(function(w){w=w.toLowerCase().replace(/[^a-z]/g,"");if(w.length>3&&stop.indexOf(w)<0)cnt[w]=(cnt[w]||0)+1});
+ var rep2=Object.keys(cnt).filter(function(k){return cnt[k]>=4}).sort(function(a,b){return cnt[b]-cnt[a]}).slice(0,4);
+ return {w:words.length,s:sents,p:paras,avg:sents?Math.round(words.length/sents):0,found:found,rep:rep2.map(function(k){return k+" ("+cnt[k]+")"}),very:(low.match(/\bvery\b/g)||[]).length};
 }
 var li=0,lc=null;
 function shuffle(a){return a.slice().sort(function(){return Math.random()-0.5})}
@@ -324,7 +741,9 @@ $("play").onclick=function(){
   catch(e){$("lr").textContent="Озвучка не поддерживается"}
 };
 $("ln").onclick=function(){li++;showL()};
-showL();
+showL();drawListen2();drawHome();
+$("menu-btn").onclick=function(){$("sidenav").classList.toggle("open");$("navbg").classList.toggle("open")};
+$("navbg").onclick=function(){$("sidenav").classList.remove("open");$("navbg").classList.remove("open")};
 (async function(){try{
  var u=await claude.use("user"),d=await claude.use("db");
  if(!u||!d){$("acc").textContent="";return}
